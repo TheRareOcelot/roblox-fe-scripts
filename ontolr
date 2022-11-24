@@ -5,7 +5,7 @@ local chat = function(MSG) -- creo thing
  game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(MSG, "All")
 end
 chat("You can now control me!! Type commands below to do so.")
-chat("Commands: -move forward, -move backward, -move leftward, -move rightward, -jump, -joke")
+chat("Commands: -move forward, -move backward, -move leftward, -move rightward,")
 chat("-shiftlock on, -shiftlock off, -stop moving, -dance, -dance1, -dance2, -dance3")
 local keys = {
  ["a"] = 0x41,
