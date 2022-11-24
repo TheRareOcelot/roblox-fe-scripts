@@ -1,0 +1,7 @@
+for _,v in pairs(workspace:GetDescendants()) do
+	if v:IsA("Seat") then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v
+	end
+end
+
+  	end   
