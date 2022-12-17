@@ -1,0 +1,144 @@
+-- Scripted on mobile
+-- Fe Vehicle Fling Alpha
+
+-- Start UP
+
+local notification = Instance.new("Sound")
+notification.Parent = game:GetService("SoundService")
+notification.SoundId = "rbxassetid://9086208751"
+notification.Volume = 1 
+
+local char = game.Players.LocalPlayer.Character
+function getRoot(char)
+ local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('Torso') or char:FindFirstChild('UpperTorso')
+ return rootPart
+end
+
+-- Part Detector Seat
+
+local SPart = Instance.new("Part");
+local Player = game:GetService('Players').LocalPlayer;
+repeat game:GetService('RunService').RenderStepped:Wait() until Player.Character;
+local Character = Player.Character;
+SPart.Anchored, SPart.CanCollide = true, true;
+SPart.Parent = workspace;
+SPart.Size = Vector3.new(1, 100, 1)
+SPart.Transparency = 0.4
+game:GetService('RunService').Stepped:Connect(function()
+    local Ray = Ray.new(Character.PrimaryPart.Position + Character.PrimaryPart.CFrame.LookVector * 6, Vector3.new(0,-1,0) * 4);
+    local FPOR = workspace:FindPartOnRayWithIgnoreList(Ray, {Character});
+    if (FPOR) then
+        SPart.CFrame = Character.PrimaryPart.CFrame + Character.PrimaryPart.CFrame.LookVector * 6;
+    end
+if SPart == nil then
+Ray:destroy()
+FPOR:destroy()
+end
+end)
+
+game.StarterGui:SetCore("SendNotification", {
+    Title = "FE Vehicle Fling";
+    Icon = "rbxassetid://7279804519";
+    Text = "Identify Passanger Seat, Part_OnTouched";
+    Duration = 10;
+notification:Play()
+})
+
+-- The finish touches
+-- Mobile and PC Support BODYGYRO
+
+SPart.Touched:Connect(function(hit)
+   if hit:IsA("Seat") then
+      local IsFlying = False
+local flyv
+local flyg
+local Player = game.Players.LocalPlayer
+local Speed = 50
+local LastSpeed = Speed
+local maxspeed = 100
+local IsRunning = false
+local f = 0
+
+IsFlying = true
+    flyv = Instance.new("BodyVelocity")
+ 
+   flyv.Parent = Player.Character:FindFirstChild('Torso') or Player.Character:FindFirstChild('UpperTorso')
+    flyv.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+ 
+    flyg = Instance.new("BodyGyro")
+   flyg.Parent = Player.Character:FindFirstChild('Torso') or Player.Character:FindFirstChild('UpperTorso')
+    flyg.MaxTorque = Vector3.new(9e9,9e9,9e9)
+    flyg.P = 1000
+    flyg.D = 50
+
+Player.Character:WaitForChild('Humanoid').PlatformStand = true
+
+Player.Character.Humanoid.Changed:Connect(function(Prop)
+  
+   if Player.Character.Humanoid.MoveDirection == Vector3.new(0,0,0) then
+    IsRunning = false
+   else
+    IsRunning = true
+   end 
+ end)
+
+spawn(function()
+  while true do
+   wait()
+  if IsFlying then
+   
+    flyg.CFrame = workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((f+0)*50*Speed/maxspeed),0,0) 
+     flyv.Velocity = workspace.CurrentCamera.CoordinateFrame.LookVector * Speed
+     wait(0.1)
+     
+     if Speed < 0 then
+     Speed = 0
+     f = 0
+end
+end
+   if IsRunning then
+   Speed = LastSpeed
+  else
+   if not Speed == 0 then
+    LastSpeed = Speed
+   end 
+   Speed = 0
+  end
+  end
+end)
+Speed = 0.1
+wait(0.3)
+hit:Sit(game:GetService("Players").LocalPlayer.Character.Humanoid)
+SPart:Destroy()
+wait(0.3)
+local speaker = game.Players.LocalPlayer
+local seat = speaker.Character:FindFirstChildOfClass('Humanoid').SeatPart
+ local vehicleModel = seat.Parent
+ repeat
+  if vehicleModel.ClassName ~= "Model" then
+   vehicleModel = vehicleModel.Parent
+  end
+ until vehicleModel.ClassName == "Model"
+ wait(0.1)
+ for i,v in pairs(vehicleModel:GetDescendants()) do
+  if v:IsA("BasePart") and v.CanCollide then
+   v.CanCollide = false
+  end
+ end
+
+wait(0.2)
+Speed = 80
+local Spin = Instance.new("BodyAngularVelocity")
+Spin.Name = "Spinning"
+Spin.Parent = getRoot(speaker.Character)
+Spin.MaxTorque = Vector3.new(0, math.huge, 0) 
+Spin.AngularVelocity = Vector3.new(0,2000,0)
+game.StarterGui:SetCore("SendNotification", {
+    Title = "FE Vehicle Fling";
+    Icon = "rbxassetid://7279804519";
+    Text = "Identified the seat part, Success!";
+    Duration = 10;
+notification:Play()
+})
+end
+end)
