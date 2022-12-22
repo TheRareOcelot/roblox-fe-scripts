@@ -1,0 +1,4 @@
+if Noclipping then
+		Noclipping:Disconnect()
+	end
+	Clip = true
