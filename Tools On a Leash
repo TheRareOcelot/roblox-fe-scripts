@@ -1,0 +1,32 @@
+for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+    v.Parent = game.Players.LocalPlayer.Character
+end
+
+for _,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v.ClassName == "Tool" then
+x = Instance.new("Attachment")
+s = Instance.new("RopeConstraint")
+v.Handle.CanCollide = true
+x.Parent = v.Handle
+s.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+s.Attachment1 = game.Players.LocalPlayer.Character["Right Arm"].RightGripAttachment
+s.Attachment0 = v.Handle.Attachment
+s.Length = 100
+s.Visible = true
+wait()
+end
+end
+
+for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+    if v.Name == "RightGrip" then
+        v:Destroy()
+    end
+end
+
+while wait() do
+    for _,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+        if v.ClassName == "Tool" then
+            v.Handle.Velocity = Vector3.new(math.random(-100, 100), 5, math.random(-100, 100))
+        end
+    end
+end
