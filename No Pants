@@ -1,0 +1,18 @@
+local character = game.Players.LocalPlayer.Character
+local leftArm = character:FindFirstChild("Left Arm")
+
+local rightLeg = character:FindFirstChild("Right Leg")
+
+if rightLeg then
+	-- Detach the left arm from the character
+	rightLeg.Parent = game.Workspace
+end
+
+local leftLeg = character:FindFirstChild("Left Leg")
+
+if leftLeg then
+	-- Detach the left arm from the character
+	leftLeg.Parent = game.Workspace
+end
+
+game.Players.LocalPlayer.Character.Humanoid.HipHeight = 2
