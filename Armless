@@ -1,0 +1,13 @@
+local character = game.Players.LocalPlayer.Character
+local leftArm = character:FindFirstChild("Left Arm")
+
+if leftArm then
+	-- Detach the left arm from the character
+	leftArm.Parent = nil
+end
+local rightArm = character:FindFirstChild("Right Arm")
+
+if rightArm then
+	-- Detach the left arm from the character
+	rightArm.Parent = nil
+end
