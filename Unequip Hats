@@ -1,0 +1,11 @@
+local player = game.Players.LocalPlayer
+local character = player.Character
+local head = character:FindFirstChild("Head")
+
+if head then
+  for _, child in ipairs(head:GetChildren()) do
+    if child:IsA("Accessory") then
+      child:Unequip()
+    end
+  end
+end
