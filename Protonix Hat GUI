@@ -19,3 +19,7 @@ Section:NewButton("Hats On a Leash", "Teleports players to the nearest tool", fu
     loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Hat%20On%20A%20Leash"))()
 
 end)
+Section:NewButton("Unequip Hats", "Unequip Hats", function()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Unequip%20Hats"))()
+
+end)
