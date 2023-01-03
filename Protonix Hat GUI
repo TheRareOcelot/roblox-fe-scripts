@@ -23,3 +23,7 @@ Section:NewButton("Unequip Hats", "Unequip Hats", function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Unequip%20Hats"))()
 
 end)
+Section:NewButton("Spinning Hat Mesh", "Your hat mesh spins", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/7dgwwzg0",true))();
+
+end)
