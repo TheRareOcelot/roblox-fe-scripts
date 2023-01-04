@@ -1,0 +1,10 @@
+local tool = Instance.new("Tool")
+tool.Name = "Invisible Tool"
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local handle = Instance.new("Part")
+handle.Name = "Handle"
+handle.Transparency = 1
+handle.CanCollide = false
+handle.Size = Vector3.new(1, 1, 1)
+handle.Parent = tool
