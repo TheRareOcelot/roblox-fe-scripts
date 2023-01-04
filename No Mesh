@@ -1,0 +1,9 @@
+for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v:IsA("Accessory") then
+        if v.Handle:FindFirstChildOfClass("Mesh") or v.Handle:FindFirstChildOfClass("SpecialMesh") then
+            if v.Handle:FindFirstChildOfClass("SpecialMesh") then
+                v.Handle:FindFirstChildOfClass("SpecialMesh"):Remove()
+            end
+        end
+    end
+end
