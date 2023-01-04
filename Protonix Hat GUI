@@ -24,3 +24,7 @@ Section:NewButton("Spinning Hat Mesh", "Your hat mesh spins", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/7dgwwzg0",true))();
 
 end)
+Section:NewButton("No Hat Mesh", "No Hat Mesh", function()
+    https://raw.githubusercontent.com/TheRareOcelot/test/main/No%20Mesh
+
+end)
