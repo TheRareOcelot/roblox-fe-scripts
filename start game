@@ -9,7 +9,8 @@ end
 function say(...)game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(tostring(...), "All") end
 
 say("🟠Welcome to the game of "..game.Players.LocalPlayer.Name..", There are currently " .. #playerCount .. " playing in this round.🟠")
-
+wait(1)
+say("🟠Try to not die from the events happening! Ill Be your host"..game.Players.LocalPlayer.Name.."🟠")
 game.Players.PlayerRemoving:Connect(function(plr) 
   local index = table.find(playerCount, plr) 
   table.remove(playerCount, tonumber(index)) 
