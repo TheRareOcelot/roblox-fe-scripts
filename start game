@@ -72,10 +72,11 @@ while start == true do
   end
 end
 
--- Handle the end of the game
+while start == true do
 if gameover == false and #playerCount == 0 then
   say("🎟️Game is over! All players have died.")
   gameover = true
+  start = false
 elseif gameover == true and #playerCount > 0 then
   local remainingContestants = ""
   for i, plr in ipairs(playerCount) do
@@ -85,6 +86,8 @@ elseif gameover == true and #playerCount > 0 then
     end
   end
   say("🎟️Game is over! Remaining contestants: " .. remainingContestants .. "")
+  start = false
+end
 end
 
 
