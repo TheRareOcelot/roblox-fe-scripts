@@ -45,7 +45,7 @@ end
 
 -- Send a message to all players indicating the number of players in the game
 say("🎟️Welcome to the game! There are currently " .. #playerCount .. " playing in this round.")
-wait(1)
+wait(3)
 say("🎟️Try to not die from the events happening! Ill Be your host "..game.Players.LocalPlayer.Name.."")
 
 -- When a player leaves the game, remove them from the playerCount table
