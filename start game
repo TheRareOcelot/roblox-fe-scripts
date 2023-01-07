@@ -72,8 +72,7 @@ while start == true do
   end
 end
 
-while start == true do
-wait(.1)
+
 if gameover == false and #playerCount == 0 then
   say("🎟️Game is over! All players have died.")
   gameover = true
