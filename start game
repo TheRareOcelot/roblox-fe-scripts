@@ -88,6 +88,6 @@ elseif gameover == true and #playerCount > 0 then
   say("🎟️Game is over! Remaining contestants: " .. remainingContestants .. "")
   start = false
 end
-end
+
 
 
