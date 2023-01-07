@@ -1,0 +1,226 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local Window = Rayfield:CreateWindow({
+	Name = "Protonix Host UI",
+	LoadingTitle = "Protonix Host UI Loading…",
+	LoadingSubtitle = "By Protonix",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "Big Hub"
+	},
+        Discord = {
+        	Enabled = false,
+        	Invite = "sirius", -- The Discord invite code, do not include discord.gg/
+        	RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+        },
+	KeySystem = false, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "n",
+		Subtitle = "n",
+		Note = "n",
+		FileName = "n",
+		SaveKey = true,
+		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = "Hello"
+	}
+})
+local Tab = Window:CreateTab("Main", 4483362458)
+local Button = Tab:CreateButton({
+	Name = "Start",
+	Callback = function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/test/main/start%20game'))()
+
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "End",
+	Callback = function()
+while true do
+gameover = true
+end
+	end,
+})
+local Section = Tab:CreateSection("Extra")
+local Input = Tab:CreateInput({
+   Name = "Chat as an Host!",
+   PlaceholderText = "🎟️Chat Here",
+   RemoveTextAfterFocusLost = false,
+   Callback = function(Text)
+say("🎟️"..Text.."")
+   end,
+})
+local Button = Tab:CreateButton({
+Name = "Infinity Yield (Spectate and Fly)",
+    Callback = function()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end,
+})
+local Tab = Window:CreateTab("Events", 4483362458)
+local Section = Tab:CreateSection("All Effected")
+local Button = Tab:CreateButton({
+	Name = "Play All Sounds!",
+	Callback = function()
+say("🎟️Playing All Sounds In Game")
+wait(3)
+        for _, v in pairs(cont:FindFirstChild("Sounds"):GetChildren()) do
+            v:Play()
+		end
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "Stop All Sounds",
+	Callback = function()
+say("🎟️Stopping All Sounds In Game!")
+wait(3)
+        for _, v in pairs(cont:FindFirstChild("Sounds"):GetChildren()) do
+            v:Stop()
+        end
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "Oof Spammer (Game must be FE)",
+	Callback = function()
+say("🎟️Oof Spammer will be Enabled!")
+wait(3)
+       loadstring(game:HttpGet("https://pastebin.com/raw/JaMbzp0B", true))()
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "Fling all (Needs Collision)",
+	Callback = function()
+say("🎟️ALL WILL GET FLUNG! END IS NEAR!")
+wait(3)
+       loadstring(game:HttpGet('https://github.com/DigitalityScripts/roblox-scripts/raw/main/loop fling all'))()
+
+	end,
+})
+
+
+local Section = Tab:CreateSection("Random Player")
+local Button = Tab:CreateButton({
+	Name = "Teleport to random",
+	Callback = function()
+say("🎟️Host will teleport to an random other player!")
+wait(3)
+     local randomPlayer = game.Players:GetPlayers()
+[math.random(1,#game.Players:GetPlayers())]
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(randomPlayer.Character.Head.Position.X, randomPlayer.Character.Head.Position.Y, randomPlayer.Character.Head.Position.Z))
+
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "Give Random Tool (Must Have tool)",
+	Callback = function()
+say("🎟️Random Player would get a tool!")
+wait(3)
+     local randomPlayer = game.Players:GetPlayers()
+[math.random(1,#game.Players:GetPlayers())]
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(randomPlayer.Character.Head.Position.X, randomPlayer.Character.Head.Position.Y, randomPlayer.Character.Head.Position.Z))
+
+local player = game.Players.LocalPlayer
+local character = player.Character
+
+for _, item in pairs(player.Backpack:GetChildren()) do
+  if item:IsA("Tool") then
+    item.Parent = character
+  end
+end
+
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "All Unanchored Parts Teleports to Random ",
+	Callback = function()
+say("🎟️A random player will get a bunch of parts!")
+wait(3)
+       loadstring(game:HttpGet("https://pastebin.com/raw/JaMbzp0B", true))()
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "Fling Random",
+	Callback = function()
+say("🎟️Some random person will be flung!")
+wait(3)
+   local function getRandomPlayer()
+  local players = game:GetService("Players"):GetPlayers()
+  return players[math.random(1, #players)]
+end
+
+-- Teleport the player's character to a random player's character's head position
+local randomPlayer = getRandomPlayer()
+local character = game:GetService("Players").LocalPlayer.Character
+if character ~= nil and randomPlayer.Character ~= nil then
+  local headPosition = randomPlayer.Character.Head.Position
+  character.HumanoidRootPart.CFrame = CFrame.new(headPosition)
+end
+
+-- Rotate the player's character continuously
+while true do
+  if character ~= nil then
+    character.HumanoidRootPart.CFrame = character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(100), 0)
+  end
+  wait(0.01)
+end
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "Annoy Random",
+	Callback = function()
+say("🎟️Host will get an option to ignore a random player!")
+wait(3)
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Annoy%20Gui%20V2", true))()
+
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "Random will get a chair",
+	Callback = function()
+say("🎟️A random player will get a chair!")
+wait(3)
+     local randomPlayer = game.Players:GetPlayers()
+[math.random(1,#game.Players:GetPlayers())]
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(randomPlayer.Character.Head.Position.X, randomPlayer.Character.Head.Position.Y, randomPlayer.Character.Head.Position.Z))
+wait(.1)
+       loadstring(game:HttpGet("https://pastebin.com/raw/uN6c86e1", true))()
+
+
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Random will get a table",
+	Callback = function()
+say("🎟️A random player will get a table!")
+wait(3)
+     local randomPlayer = game.Players:GetPlayers()
+[math.random(1,#game.Players:GetPlayers())]
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(randomPlayer.Character.Head.Position.X, randomPlayer.Character.Head.Position.Y, randomPlayer.Character.Head.Position.Z))
+wait(.1)
+      loadstring(game:HttpGet("https://pastebin.com/raw/9kDrHnUd", true))()
+
+
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "Random will get a cube",
+	Callback = function()
+say("🎟️A random player will get a cube!")
+wait(3)
+     local randomPlayer = game.Players:GetPlayers()
+[math.random(1,#game.Players:GetPlayers())]
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(randomPlayer.Character.Head.Position.X, randomPlayer.Character.Head.Position.Y, randomPlayer.Character.Head.Position.Z))
+wait(.1)
+
+   loadstring(game:HttpGet(('https://pastebin.com/raw/RpJbS0Pu'),true))()
+
+
+	end,
+})
+
+
