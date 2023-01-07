@@ -1,32 +1,82 @@
-Start = true
-Gameover = false
-If start = true then
+ start = true
+gameover = false
+
+-- Create a table to store the players in the game
 local playerCount = {}
 
+-- Function to handle player deaths
+function onPlayerDied(plr)
+  -- Find the index of the player in the playerCount table
+  local index = -1
+  for i, player in ipairs(playerCount) do
+    if player == plr then
+      index = i
+      break
+    end
+  end
+  -- If the player was found in the table, remove them from the table
+  if index ~= -1 then
+    table.remove(playerCount, index)
+  end
+end
+
+-- Connect the Died event for each player's Humanoid object
+for _, player in ipairs(game.Players:GetChildren()) do
+  local character = player.Character
+  if character then
+    local human = character:WaitForChild("Humanoid")
+    if human then
+      human.Died:Connect(function()
+        onPlayerDied(player)
+      end)
+    end
+  end
+end
+
+-- Function to send a message to all players
+function say(...)
+  game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(tostring(...), "All")
+end
+
+-- Add all players to the playerCount table
 for _, plr in ipairs(game.Players:GetChildren()) do
   table.insert(playerCount, plr)
 end
-function say(...)game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(tostring(...), "All") end
 
-say("🟠Welcome to the game of "..game.Players.LocalPlayer.Name..", There are currently " .. #playerCount .. " playing in this round.🟠")
+-- Send a message to all players indicating the number of players in the game
+say("🎟️Welcome to the game! There are currently " .. #playerCount .. " playing in this round.")
 wait(1)
-say("🟠Try to not die from the events happening! Ill Be your host"..game.Players.LocalPlayer.Name.."🟠")
-game.Players.PlayerRemoving:Connect(function(plr) 
-  local index = table.find(playerCount, plr) 
-  table.remove(playerCount, tonumber(index)) 
+say("🎟️Try to not die from the events happening! Ill Be your host "..game.Players.LocalPlayer.Name.."")
+
+-- When a player leaves the game, remove them from the playerCount table
+game.Players.PlayerRemoving:Connect(function(plr)
+  local index = -1
+  for i, player in ipairs(playerCount) do
+    if player == plr then
+      index = i
+      break
+    end
+  end
+  if index ~= -1 then
+    table.remove(playerCount, index)
+  end
 end)
 
-game.Players.PlayerDied:Connect(function(plr)
-  local index = table.find(playerCount, plr)
-  table.remove(playerCount, tonumber(index))
-end)
+-- Run the game loop
+while start == true do
+  wait(30)
+  say("🎟️There is " .. #playerCount .. " still alive!")
+  if #playerCount == 1 then
+    gameover = true
+    start = false
+  end
+end
 
-While start = true do
-wait(30)
-say("🟠There is " .. #playerCount .. " still alive!🟠")
-End
-
-if gameover == true and #playerCount > 0 then
+-- Handle the end of the game
+if gameover == false and #playerCount == 0 then
+  say("🎟️Game is over! All players have died.")
+  gameover = true
+elseif gameover == true and #playerCount > 0 then
   local remainingContestants = ""
   for i, plr in ipairs(playerCount) do
     remainingContestants = remainingContestants .. plr.Name
@@ -34,21 +84,7 @@ if gameover == true and #playerCount > 0 then
       remainingContestants = remainingContestants .. ", "
     end
   end
-  say("🟠Game is over! Remaining contestants: " .. remainingContestants .. "🟠")
-
-elseif #playerCount == 1 then
-Gameover = true
+  say("🎟️Game is over! Remaining contestants: " .. remainingContestants .. "")
 end
-elseif gameover == true and #playerCount == 0 then
-  local remainingContestants = ""
-  for i, plr in ipairs(game.Players:GetChildren()) do
-    remainingContestants = remainingContestants .. plr.Name
-    end
-  end
-  say("🟠Game is over! Last one standing: " .. remainingContestants .. "🟠")
-  start = false
-end
-
-
 
 
