@@ -71,26 +71,17 @@ while start == true do
     start = false
   end
 end
-if manend == true then
-  say("🎟️Game is over! Winners: " .. remainingContestants .. "")
-    start = false
-    gameover = true
-  end
+
 
 if gameover == false and #playerCount == 0 then
   say("🎟️Game is over! All players have died.")
   gameover = true
   start = false
-elseif gameover == true and #playerCount > 0 then
-  local remainingContestants = ""
-  for i, plr in ipairs(playerCount) do
-    remainingContestants = remainingContestants .. plr.Name
-    if i < #playerCount then
-      remainingContestants = remainingContestants .. ", "
-    end
-  end
-  say("🎟️Game is over! Remaining contestants: " .. remainingContestants .. "")
+  elseif manend == true then
+  say("🎟️Game is over! Winners: " .. remainingContestants .. "")
   start = false
+  gameover = true
 end
+
 
 
