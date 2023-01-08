@@ -1,3 +1,4 @@
+
  start = true
 gameover = false
 
@@ -33,7 +34,8 @@ game.Players.PlayerRemoving:Connect(function(plr)
     table.remove(playerCount, index)
   end
 end)
-If jumpevent == true
+
+if jumpevent == true then
 wait(3)
   
   -- Check if any players did not jump
@@ -70,5 +72,3 @@ elseif gameover == true and #playerCount > 0 then
   end
   say("🎲Game is over! Remaining contestants: " .. remainingContestants .. "")
 end
-
-
