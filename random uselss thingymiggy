@@ -1,5 +1,6 @@
 start = true
 gameover = false
+jumpevent = false
 
 -- Create a table to store the players in the game
 local playerCount = {}
