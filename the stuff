@@ -32,15 +32,6 @@ local Button = Tab:CreateButton({
 
 	end,
 })
-
-local Button = Tab:CreateButton({
-	Name = "End",
-	Callback = function()
-while true do
-gameover = true
-end
-	end,
-})
 local Section = Tab:CreateSection("Extra")
 local Input = Tab:CreateInput({
    Name = "Chat as an Host!",
