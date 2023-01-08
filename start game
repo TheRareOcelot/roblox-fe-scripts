@@ -76,7 +76,6 @@ if manend == true then
     start = false
     gameover = true
   end
-end
 
 if gameover == false and #playerCount == 0 then
   say("🎟️Game is over! All players have died.")
@@ -93,6 +92,5 @@ elseif gameover == true and #playerCount > 0 then
   say("🎟️Game is over! Remaining contestants: " .. remainingContestants .. "")
   start = false
 end
-
 
 
