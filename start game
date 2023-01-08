@@ -71,16 +71,17 @@ while start == true do
     start = false
   end
 end
-
+  if manend == true then
+    say("🎟️Game is over! Winners: " .. remainingContestants .. "")
+    start = false
+    gameover = true
+  end
+end
 
 if gameover == false and #playerCount == 0 then
   say("🎟️Game is over! All players have died.")
   gameover = true
   start = false
-  elseif manend == true then
-  say("🎟️Game is over! Winners: " .. remainingContestants .. "")
-  start = false
-  gameover = true
 end
 
 
