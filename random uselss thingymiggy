@@ -35,25 +35,25 @@ game.Players.PlayerRemoving:Connect(function(plr)
 end)
 
 while start == true do
-  if jumpevent == true then
-    wait(3)
-  
-    -- Check if any players did not jump
-    for i, plr in ipairs(playerCount) do
-      if not plr.Character:FindFirstChild("HumanoidRootPart").Velocity.Y > 0 then
-        say(plr.Name .. " did not jump and is eliminated")
-        table.remove(playerCount, i)
-        i = i - 1
-      end
-    end
-    jumpevent = false
-  end
-  wait(30)
+wait(30)
   say("🎲There is " .. #playerCount .. " still alive!")
   if #playerCount == 1 then
     gameover = true
     start = false
   end
+  
+while start == true do
+  if jumpevent == true then
+    wait(3)
+  
+    -- Check if any players did not jump
+   for i, plr in ipairs(playerCount) do
+      if not plr.Character:FindFirstChild("HumanoidRootPart").Velocity.Y > 0 then
+        say(plr.Name .. " did not jump and is eliminated")
+        table.remove(playerCount, i)
+        i = i - 1
+      end
+    jumpevent = false
 end
 
 -- Handle the end of the game
