@@ -1,10 +1,8 @@
-
- start = true
+start = true
 gameover = false
 
 -- Create a table to store the players in the game
 local playerCount = {}
-
 
 -- Function to send a message to all players
 function say(...)
@@ -35,22 +33,20 @@ game.Players.PlayerRemoving:Connect(function(plr)
   end
 end)
 
-if jumpevent == true then
-wait(3)
-  
-  -- Check if any players did not jump
-  for i, plr in ipairs(playerCount) do
-    if not plr.Character:FindFirstChild("HumanoidRootPart").Velocity.Y > 0 then
-      say(plr.Name .. " did not jump and is eliminated")
-      table.remove(playerCount, i)
-      i = i - 1
-    end
-  end
-nt=false
-end
-
--- Run the game loop
 while start == true do
+  if jumpevent == true then
+    wait(3)
+  
+    -- Check if any players did not jump
+    for i, plr in ipairs(playerCount) do
+      if not plr.Character:FindFirstChild("HumanoidRootPart").Velocity.Y > 0 then
+        say(plr.Name .. " did not jump and is eliminated")
+        table.remove(playerCount, i)
+        i = i - 1
+      end
+    end
+    jumpevent = false
+  end
   wait(30)
   say("🎲There is " .. #playerCount .. " still alive!")
   if #playerCount == 1 then
@@ -58,6 +54,7 @@ while start == true do
     start = false
   end
 end
+
 -- Handle the end of the game
 if gameover == false and #playerCount == 0 then
   say("🎲Game is over! All players lost.")
