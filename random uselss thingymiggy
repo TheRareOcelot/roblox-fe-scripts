@@ -35,38 +35,40 @@ game.Players.PlayerRemoving:Connect(function(plr)
 end)
 
 while start == true do
-wait(30)
+  wait(30)
   say("🎲There is " .. #playerCount .. " still alive!")
   if #playerCount == 1 then
     gameover = true
     start = false
   end
   
-while start == true do
-  if jumpevent == true then
-    wait(3)
-  
-    -- Check if any players did not jump
-   for i, plr in ipairs(playerCount) do
-      if not plr.Character:FindFirstChild("HumanoidRootPart").Velocity.Y > 0 then
-        say(plr.Name .. " did not jump and is eliminated")
-        table.remove(playerCount, i)
-        i = i - 1
-      end
-    jumpevent = false
-end
-
--- Handle the end of the game
-if gameover == false and #playerCount == 0 then
-  say("🎲Game is over! All players lost.")
-  gameover = true
-elseif gameover == true and #playerCount > 0 then
-  local remainingContestants = ""
-  for i, plr in ipairs(playerCount) do
-    remainingContestants = remainingContestants .. plr.Name
-    if i < #playerCount then
-      remainingContestants = remainingContestants .. ", "
+  while start == true do
+    if jumpevent == true then
+      wait(3)
+    
+      -- Check if any players did not jump
+      for i, plr in ipairs(playerCount) do
+        if not plr.Character:FindFirstChild("HumanoidRootPart").Velocity.Y > 0 then
+          say(plr.Name .. " did not jump and is eliminated")
+          table.remove(playerCount, i)
+          i = i - 1
+        end
+      jumpevent = false
     end
   end
-  say("🎲Game is over! Remaining contestants: " .. remainingContestants .. "")
+  
+  -- Handle the end of the game
+  if gameover == false and #playerCount == 0 then
+    say("🎲Game is over! All players lost.")
+    gameover = true
+  elseif gameover == true and #playerCount > 0 then
+    local remainingContestants = ""
+    for i, plr in ipairs(playerCount) do
+      remainingContestants = remainingContestants .. plr.Name
+      if i < #playerCount then
+        remainingContestants = remainingContestants .. ", "
+      end
+    end
+    say("🎲Game is over! Remaining contestants: " .. remainingContestants .. "")
+  end
 end
