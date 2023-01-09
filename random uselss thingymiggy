@@ -43,7 +43,7 @@ while start == true do
   end
   end
   while start == true do
-    if jumpevent == true then
+    if jumpevent == true do
       wait(3)
     
       -- Check if any players did not jump
