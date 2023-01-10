@@ -1,0 +1,99 @@
+local jumpevent = false -- variable to track when "Simon" says "jump"
+local runEvent = false -- variable to track when "Simon" says "run"
+
+-- Function to handle player deaths
+function onPlayerDied(plr)
+  -- Find the index of the player in the playerCount table
+  local index = -1
+  for i, player in ipairs(playerCount) do
+    if player == plr then
+      index = i
+      break
+    end
+  end
+  -- If the player was found in the table, remove them from the table
+  if index ~= -1 then
+    table.remove(playerCount, index)
+  end
+end
+
+
+-- Add all players to the playerCount table
+for _, plr in ipairs(game.Players:GetChildren()) do
+  table.insert(playerCount, plr)
+end
+
+-- Function to send a message to all players
+function say(...)
+  game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(tostring(...), "All")
+end
+
+-- Send a message to all players indicating the number of players in the game
+say("🎲Welcome to simon says! There are currently " .. #playerCount .. " playing in this round.")
+
+-- create a function simonEvent which will take the event name and activate its event
+function simonEvent(event)
+    if event == "jump" then
+        jumpevent = true
+    elseif event == "run" then
+        runEvent = true
+    end
+end
+
+-- Function for simon says something
+function simonSays(event)
+    say("🎲Simon says: " .. event)
+    simonEvent(event)
+    wait(5)
+    -- deactivating the event
+    jumpevent = false
+    runEvent = false
+end
+
+-- function to check if player is performing the required action 
+function checkEvent()
+    for _, player in ipairs(playerCount) do
+        local character = player.Character
+        if character then
+            local human = character:WaitForChild("Humanoid")
+            if human then
+                if jumpevent and not human.Jump then
+                    onPlayerDied(player)
+                    say(player.Name.." was eliminated for not jumping!")
+                end
+                if runEvent and not human.MoveDirection.Magnitude > 0 then
+                    onPlayerDied(player)
+                    say(player.Name.." was eliminated for not running!")
+                end
+            end
+        end
+    end
+end
+
+-- Run the game loop
+while start == true do
+  if #playerCount == 1 then
+    gameover = true
+    start = false
+  end
+end
+
+if gameover == false and #playerCount == 0 then
+  say("🎲Game is over! All players have died.")
+  gameover = true
+  start = false
+elseif gameover == true and #playerCount > 0 then
+  local remainingContestants = ""
+  for i, plr in ipairs(playerCount) do
+    remainingContestants = remainingContestants .. plr.Name
+    if i < #playerCount then
+      remainingContestants = remainingContestants .. ", "
+    end
+  end
+  say("🎲Game is over! Remaining contestants: " .. remainingContestants .. "")
+  start = false
+elseif manend == true then
+  say("🎲Game is over! Winners: " .. remainingContestants .. "")
+  start = false
+  gameover = true
+end
