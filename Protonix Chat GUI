@@ -2,8 +2,9 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 local Window = Library.CreateLib("Protonix Chat GUI", "Synapse")
 local Tab = Window:NewTab("Chat GUI")
 local Section = Tab:NewSection("Main")
-Section:NewButton("Chat Bypasser", "Does not work with most curse words", function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/test/main/Grab%20Tools', true))()
+Section:NewButton("Chat Bypasser (Q)", "Keybind is Q", function()
+    _G.Keybind = 'Q' -- This is usually defaulted to Q. However, you can change to whatever you want.
+loadstring(game:HttpGet("https://raw.githubusercontent.com/synnyyy/synergy/additional/betterbypasser",true))()
 end)
 Section:NewToggle("Bubble Chat", "Make you see the chat ingame", function(state)
     if state then
