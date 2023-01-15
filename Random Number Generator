@@ -1,0 +1,36 @@
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Guess a number between 1 and 10!","All")
+local randomNumber = math.random(1, 10)
+if randomNumber == 1 then
+wait(5)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("The number was 1!","All")
+elseif randomNumber == 2 then
+wait(5)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("The number was 2!","All")
+elseif randomNumber == 3 then
+wait(5)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("The number was 3!","All")
+elseif randomNumber == 4 then
+wait(5)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("The number was 4!","All")
+elseif randomNumber == 5 then
+wait(5)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("The number was 5!","All")
+elseif randomNumber == 6 then
+wait(5)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("The number was 6!","All")
+elseif randomNumber == 7 then
+wait(5)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("The number was 7!","All")
+elseif randomNumber == 8 then
+wait(5)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("The number was 8!","All")
+elseif randomNumber == 9 then
+wait(5)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("The number was 9!","All")
+elseif randomNumber == 10 then
+wait(5)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("The number was 10!","All")
+end
+
+
+
