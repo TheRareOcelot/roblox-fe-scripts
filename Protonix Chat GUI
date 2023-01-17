@@ -2,16 +2,39 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 local Window = Library.CreateLib("Protonix Chat GUI", "Synapse")
 local Tab = Window:NewTab("Chat GUI")
 local Section = Tab:NewSection("Main")
-Section:NewButton("Chat Bypasser (Q)", "Keybind is Q", function()
-    _G.Keybind = 'Q' -- This is usually defaulted to Q. However, you can change to whatever you want.
-loadstring(game:HttpGet("https://raw.githubusercontent.com/synnyyy/synergy/additional/betterbypasser",true))()
-end)
-Section:NewToggle("Bubble Chat", "Make you see the chat ingame", function(state)
-    if state then
-        game.Chat.BubbleChatEnabled = true
-    else
-        game.Chat.BubbleChatEnabled = false
-    end
+Section:NewTextBox("Chat Bypasser", "Text Here", function(Text)
+	local chat = Text
+   local tabl = {}
+   for i = 1, #chat do
+       local chara = chat:sub(i,i)
+       if string.lower(chara) == "w" then
+           chara = "ɯ"
+       elseif string.lower(chara) == "n" then
+           chara = "ヘ"
+       elseif string.lower(chara) == "i" then
+           chara = "エ"
+       elseif string.lower(chara) == "c" then
+           chara = "く"
+       elseif string.lower(chara) == "t" then
+           chara = "て"
+       elseif string.lower(chara) == "o" then
+           chara = "○"
+       elseif string.lower(chara) == "u" then
+           chara = "ぴ"
+       elseif string.lower(chara) == "s" and bypass_s then
+           chara = "う" --TODO: Find better S character
+       elseif string.lower(chara) == " " then
+           chara = "  "
+       elseif string.lower(chara) == "h" then
+           chara = "カ"
+       end
+       table.insert(tabl, chara)
+   end
+   chat = ""
+   for i,v in pairs(tabl) do
+       chat = chat..v
+   end
+   game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chat, "All")
 end)
 Section:NewToggle("Chat Destroyer", "Make you see the chat ingame", function(state)
     if state then
