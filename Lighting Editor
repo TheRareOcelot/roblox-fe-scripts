@@ -1,0 +1,22 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Protonix Lighting Editor", "Synapse")
+local Tab = Window:NewTab("Lighting Editor")
+local Section = Tab:NewSection("Main")
+Section:NewLabel("REMEMBER THAT THIS IS CLIENT SIDE")
+Section:NewColorPicker("Ambient", "Makes the world a different color", Color3.fromRGB(0,0,0), function(color)
+    game.Lighting.Ambient = color
+    -- Second argument is the default color
+end)
+Section:NewTextBox("Brightness", "If the world is dark or bright", function(txt)
+	game.Lighting.Brightness = txt
+end)
+Section:NewTextBox("Shadow Softness", "how dark is the shadows", function(txt2)
+	game.Lighting.ShadowSoftness = txt2
+end)
+Section:NewToggle("Global Shadows", "If there should be shadows", function(state)
+    if state then
+        game.Lighting.GlobalShadows = true
+    else
+        game.Lighting.GlobalShadows = false
+    end
+end)
