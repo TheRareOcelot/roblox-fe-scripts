@@ -27,3 +27,7 @@ end)
 Section:NewButton("No Hat Mesh", "No Hat Mesh", function()
   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/No%20Mesh",true))();
 end)
+Section:NewButton("Simulator Pets", "Hats become simulator pets!", function()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/rouxhaver/scripts/main/FE%20Simulator%20Pets.lua"))()
+
+end)
