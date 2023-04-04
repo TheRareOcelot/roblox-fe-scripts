@@ -59,6 +59,12 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
+    Name     = "Hat Btools",
+    Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/rouxhaver/scripts-2/main/FE%20BTools%20V3.Lua"))()
+    end    
+})
+Tab:AddButton({
     Name     = "Hats On A Leash",
     Callback = function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Hat%20On%20A%20Leash"))()
