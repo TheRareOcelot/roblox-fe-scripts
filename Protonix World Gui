@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window   = OrionLib:MakeWindow({Name = "Protonix World Gui", HidePremium = false, SaveConfig = true, ConfigFolder = "ProtonixConfigures", IntroEnabled =  true, IntroText = "Welcome to Protonix"})
+local Window   = OrionLib:MakeWindow({Name = "Protonix World Gui", HidePremium = false, SaveConfig = true, ConfigFolder = "ProtonixConfigures", IntroEnabled =  true, IntroText = "Protonix World Gui"})
 
 --[[
 Name = <string> - The name of the UI.
@@ -49,15 +49,10 @@ local Tab = Window:MakeTab({
   Tab:AddButton({
   Name = "Hat Orbit",
     Callback = function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/4B4fktPS", true))()
+    loadstring(game:HttpGet("https://pastebin.com/raw/BsJ4xfXu", true))()
     end    
 })
-Tab:AddButton({
-    Name     = "Eat Hats",
-    Callback = function()
-              loadstring(game:HttpGet("https://pastebin.com/raw/6nXuRhVV", true))()
-    end    
-})
+
 Tab:AddButton({
     Name     = "Hat Btools",
     Callback = function()
@@ -71,21 +66,30 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name     = "Hats On A Leash",
+    Name     = "Hat To Block",
     Callback = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Hat%20On%20A%20Leash"))()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe./main/Hats%20blocker",true))();
     end    
 })
 Tab:AddButton({
-    Name     = "Remove Mesh",
+    Name     = "Eat Hats",
     Callback = function()
-             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/No%20Mesh",true))();
+              loadstring(game:HttpGet("https://pastebin.com/raw/6nXuRhVV", true))()
     end    
+})
+local Section = Tab:AddSection({
+	Name = "Other"
 })
 Tab:AddButton({
     Name = "Spinning Hat Mesh",
     Callback = function()
                loadstring(game:HttpGet("https://pastebin.com/raw/7dgwwzg0",true))();
+    end    
+})
+Tab:AddButton({
+    Name     = "Hats On A Leash",
+    Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Hat%20On%20A%20Leash"))()
     end    
 })
 Tab:AddButton({
@@ -100,28 +104,45 @@ local Tab = Window:MakeTab({
     PremiumOnly = false
     })
     
-    Tab:AddButton({
-    Name     = "Grab Tools",
-    Callback = function()
-                loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/test/main/Grab%20Tools', true))()
-    end    
-})
    Tab:AddButton({
    Name = "Tool Rotator",
     Callback = function()
                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Tool%20Rotator"))()
     end    
 })   
+
+Tab:AddButton({
+    Name     = "Tool Editor",
+    Callback = function()
+             loadstring(game:HttpGet(('https://pastebin.com/raw/kTS6dxCM'),true))() 
+    end    
+}) 
+
+Tab:AddButton({
+    Name     = "Tool Giver V2",
+    Callback = function()
+               loadstring(game:HttpGet('https://pastebin.com/raw/Fj8KWmLC'))()
+    end    
+})
 Tab:AddButton({
     Name     = "Dupe Tools",
     Callback = function()
               loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Dupe%20Tools%20Main%20Script.md'))()
     end    
-})   
-Tab:AddButton({
-    Name     = "Tool Giver V2",
+})  
+  Tab:AddButton({
+    Name     = "Grab Tools",
     Callback = function()
-               loadstring(game:HttpGet('https://pastebin.com/raw/Fj8KWmLC'))()
+                loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/test/main/Grab%20Tools', true))()
+    end    
+})
+local Section = Tab:AddSection({
+	Name = "Other"
+})
+Tab:AddButton({
+    Name     = "Dupe Tools On Ground",
+    Callback = function()
+                   loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Spam%20Tools'))()
     end    
 })
 Tab:AddButton({
@@ -131,23 +152,18 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name     = "Tools On A Leash",
-    Callback = function()
-                  loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Tools%20On%20a%20Leash"))()
-    end    
-})
-Tab:AddButton({
     Name     = "Invisible Tool",
     Callback = function()
                    loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Invisible%20Tool"))()
     end    
 })
 Tab:AddButton({
-    Name     = "Dupe Tools On Ground",
+    Name     = "Tools On A Leash",
     Callback = function()
-                   loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Spam%20Tools'))()
+                  loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Tools%20On%20a%20Leash"))()
     end    
 })
+
 local Tab = Window:MakeTab({
     Name        = "Chat",
     Icon        = "rbxassetid://4483345998",
@@ -231,6 +247,9 @@ Tab:AddButton({
     Callback = function()
                      loadstring(game:HttpGet("https://raw.githubusercontent.com/omegachadgaming/mongus/main/main.lua", true))()
     end    
+})
+local Section = Tab:AddSection({
+	Name = "Other"
 })
 Tab:AddButton({
     Name     = "Nerd Emoji",
