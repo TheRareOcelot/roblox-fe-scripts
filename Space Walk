@@ -1,0 +1,5 @@
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 8
+wait(0.1)
+game.Workspace.Gravity = 20
+wait(0.1)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 15
