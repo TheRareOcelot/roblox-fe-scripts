@@ -65,6 +65,12 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
+    Name     = "Move Hats",
+    Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Move%20Hats"))()
+    end    
+})
+Tab:AddButton({
     Name     = "Hats On A Leash",
     Callback = function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Hat%20On%20A%20Leash"))()
