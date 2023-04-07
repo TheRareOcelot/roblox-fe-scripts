@@ -49,7 +49,7 @@ local Tab = Window:MakeTab({
   Tab:AddButton({
   Name = "Hat Orbit",
     Callback = function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/BsJ4xfXu", true))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe./main/Spin%20hats", true))()
     end    
 })
 
