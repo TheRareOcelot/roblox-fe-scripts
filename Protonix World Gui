@@ -264,10 +264,13 @@ Tab:AddButton({
     end    
 })
 local Tab = Window:MakeTab({
-    Name        = "Sound",
+    Name        = "Sound & Cars",
     Icon        = "rbxassetid://4483345998",
     PremiumOnly = false
     })
+    local Section = Tab:AddSection({
+	Name = "Sound"
+})
     Tab:AddButton({
     Name     = "Play All Sounds",
     Callback = function()
@@ -297,12 +300,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/ma
  
     end    
 })
-    
-local Tab = Window:MakeTab({
-    Name        = "Cars",
-    Icon        = "rbxassetid://4483345998",
-    PremiumOnly = false
-    })
+local Section = Tab:AddSection({
+	Name = "Cars"
+})
 Tab:AddButton({
     Name     = "Car Tornado",
     Callback = function()
@@ -319,51 +319,3 @@ Tab:AddButton({
     end    
 })
 
-local Tab = Window:MakeTab({
-    Name        = "Camera & Gui",
-    Icon        = "rbxassetid://4483345998",
-    PremiumOnly = false
-    })
-local Section = Tab:AddSection({
-    Name = "Camera"
-})
-
-Tab:AddButton({
-    Name     = "Freecam",
-    Callback = function()
-                   loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Break%20Camera'))()
-    end    
-})
-Tab:AddButton({
-    Name     = "Freeze Camera",
-    Callback = function()
-                   loadstring(game:HttpGet('https://pastebin.com/raw/T0S0RPTW'))()
-    end    
-})
-Tab:AddButton({
-    Name     = "VR",
-    Callback = function()
-                   loadstring(game:HttpGet("https://pastebin.com/qqGr4szr", true))()
-    end    
-})
-local Section = Tab:AddSection({
-    Name = "Gui"
-})
-Tab:AddButton({
-    Name     = "Autoclicker (e)",
-    Callback = function()
-                   loadstring(game:HttpGet(('https://raw.githubusercontent.com/TheRareOcelot/test/main/Autoclicker')))() 
-    end    
-})
-Tab:AddButton({
-    Name     = "Spectate",
-    Callback = function()
-                   loadstring(game:HttpGet('https://pastebin.com/raw/wyvdb7gr'))()
-    end    
-})
-Tab:AddButton({
-    Name     = "Fire All Click Detectors",
-    Callback = function()
-                   loadstring(game:HttpGet("https://pastebin.com/raw/0Crf1y1j", true))() 
-    end    
-})
