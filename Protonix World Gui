@@ -46,78 +46,13 @@ local Tab = Window:MakeTab({
     Icon        = "rbxassetid://4483345998",
     PremiumOnly = false
     })
-  Tab:AddButton({
-  Name = "Hat Orbit",
-    Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe./main/Spin%20hats", true))()
-    end    
-})
 
-Tab:AddButton({
-    Name     = "Hat Btools",
-    Callback = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/rouxhaver/scripts-2/main/FE%20BTools%20V3.Lua"))()
-    end    
-})
-Tab:AddButton({
-    Name     = "Move Hats",
-    Callback = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Move%20Hats"))()
-    end    
-})
-Tab:AddButton({
-    Name     = "Hat To Block",
-    Callback = function()
-             loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe./main/Hats%20blocker",true))();
-    end    
-})
-Tab:AddButton({
-    Name     = "Eat Hats",
-    Callback = function()
-              loadstring(game:HttpGet("https://pastebin.com/raw/6nXuRhVV", true))()
-    end    
-})
-local Section = Tab:AddSection({
-	Name = "Other"
-})
-Tab:AddButton({
-    Name = "Spinning Hat Mesh",
-    Callback = function()
-               loadstring(game:HttpGet("https://pastebin.com/raw/7dgwwzg0",true))();
-    end    
-})
-Tab:AddButton({
-    Name     = "Hats On A Leash",
-    Callback = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Hat%20On%20A%20Leash"))()
-    end    
-})
-Tab:AddButton({
-    Name     = "Simulator Pets",
-    Callback = function()
-               loadstring(game:HttpGet("https://raw.githubusercontent.com/rouxhaver/scripts/main/FE%20Simulator%20Pets.lua"))()
-    end    
-})
 local Tab = Window:MakeTab({
     Name        = "Tools",
     Icon        = "rbxassetid://4483345998",
     PremiumOnly = false
     })
     
-   Tab:AddButton({
-   Name = "Tool Rotator",
-    Callback = function()
-               loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Tool%20Rotator"))()
-    end    
-})   
-
-Tab:AddButton({
-    Name     = "Tool Editor",
-    Callback = function()
-             loadstring(game:HttpGet(('https://pastebin.com/raw/kTS6dxCM'),true))() 
-    end    
-}) 
-
 Tab:AddButton({
     Name     = "Tool Giver V2",
     Callback = function()
