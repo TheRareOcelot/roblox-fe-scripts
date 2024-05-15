@@ -1,0 +1,240 @@
+local onoff = true
+local Selected = {}
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Part Selector", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+Tab:AddParagraph("About", "Only you can go through and see through parts. Delete All Unanchored is serverside if its not connected to another block. Delete Children and Delete scripts only effect you so its useful for lava and such.")
+Tab:AddParagraph("Credits", "Credits go to the random guy that made the select script for devhub and chatgpt for doing the dirty work and me using my common sense. happy.hunter is really hot btw")
+local Section = Tab:AddSection({
+    Name = "Selector"
+})
+Tab:AddButton({
+    Name = "Start Selector",
+    Callback = function()
+
+        local UserInputService = game:GetService("UserInputService")
+        local Player = game.Players.LocalPlayer
+        local Mouse = Player:GetMouse()
+
+        local Boxes = {
+            InUse = {},
+            Cache = {},
+        }
+
+        local function HighlightPart(part)
+            local box = table.remove(Boxes.Cache, 1) -- retrieves an unused selection box if there is one
+            if onoff == true then
+                if not box then -- creates a box if there wasn't one in the cache
+                    box = Instance.new("SelectionBox")
+                    box.LineThickness = 0.05
+                    box.Adornee = part
+                    box.Parent = workspace
+                end
+                box.Adornee = part
+                table.insert(Boxes.InUse, box)
+            end
+        end
+
+        local function UnhighlightPart(part)
+            local position, box
+            for i, selection in pairs(Boxes.InUse) do
+                if selection.Adornee == part then
+                    position = i
+                    box = selection
+                end
+            end
+
+            if box then
+                box.Adornee = nil
+                table.insert(Boxes.Cache, table.remove(Boxes.InUse, position))
+            end
+        end
+
+        UserInputService.InputBegan:Connect(function(input)
+            if input.KeyCode == Enum.KeyCode.E then
+                local Target = Mouse.Target
+                local check = table.find(Selected, Target)
+
+                if Target and Target.Parent then
+                    if check then
+                        UnhighlightPart(Target)
+                        local index = table.find(Selected, Target)
+                        table.remove(Selected, index)
+                    else
+                        HighlightPart(Target)
+                        table.insert(Selected, Target)
+                    end
+                elseif not check then
+                    for _, part in pairs(Selected) do
+                        UnhighlightPart(part)
+                    end
+                    table.clear(Selected)
+
+                    HighlightPart(Target)
+                    table.insert(Selected, Target)
+                end
+            end
+        end)
+
+        UserInputService.InputBegan:Connect(function(input)
+            if input.KeyCode == Enum.KeyCode.R then
+                local Target = Mouse.Target
+                local check = table.find(Selected, Target)
+                if Target and check then
+                    UnhighlightPart(Target)
+                    local index = table.find(Selected, Target)
+                    table.remove(Selected, index)
+                end
+            end
+        end)
+
+        UserInputService.InputEnded:Connect(function(input)
+            if input.KeyCode == Enum.KeyCode.Q then
+                for _, part in pairs(Selected) do
+                    UnhighlightPart(part)
+                end
+                table.clear(Selected)
+            end
+        end)
+
+        -- Teleport and CanCollide functionality when T is pressed
+        UserInputService.InputEnded:Connect(function(input)
+            if input.KeyCode == Enum.KeyCode.T then
+                for _, part in pairs(Selected) do
+                    if not part.Anchored then
+                        Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
+                        part.CanCollide = false
+                        UnhighlightPart(part)
+                        local index = table.find(Selected, part)
+                        if index then
+                            table.remove(Selected, index)
+                        end
+                        wait(1)
+                    end
+                end
+            end
+        end)
+
+    end
+})
+
+Tab:AddToggle({
+    Name = "Enable",
+    Default = true,
+    Callback = function(Value)
+        onoff = Value
+    end
+})
+
+local Section = Tab:AddSection({
+    Name = "Binds"
+})
+Tab:AddLabel("Q - Unselect All")
+Tab:AddLabel("E - Select Part")
+Tab:AddLabel("R - Unselect One")
+Tab:AddLabel("T - Delete All Unanchored")
+
+local Section = Tab:AddSection({
+    Name = "Properties"
+})
+
+Tab:AddToggle({
+    Name = "Go-through",
+    Default = false,
+    Callback = function(Value2)
+        Value2 = not Value2
+        for _, part in pairs(Selected) do
+            part.CanCollide = Value2
+        end
+    end
+})
+
+Tab:AddSlider({
+    Name = "See-through",
+    Min = 0,
+    Max = 1,
+    Default = 0,
+    Color = Color3.fromRGB(0,0,255),
+    Increment = 0.1,
+    ValueName = "Transparency",
+    Callback = function(Value4)
+        for _, part in pairs(Selected) do
+            part.Transparency = Value4
+        end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Can Touch",
+    Default = true,
+    Callback = function(Value2)
+        for _, part in pairs(Selected) do
+            part.CanTouch = Value2
+        end
+    end
+})
+Tab:AddButton({
+    Name = "Delete Children",
+    Callback = function()
+        for _, part in pairs(Selected) do
+            for _, child in pairs(part:GetChildren()) do
+                child:Destroy()
+            end
+        end
+    end    
+})
+Tab:AddButton({
+    Name = "Delete Scripts",
+    Callback = function()
+        for _, part in pairs(Selected) do
+            for _, child in pairs(part:GetChildren()) do
+                if child:IsA("Script") or child:IsA("LocalScript") then
+                    child:Destroy()
+                end
+            end
+        end
+    end    
+})
+
+
+
+local Section = Tab:AddSection({
+    Name = "ClientSided Effects"
+})
+
+Tab:AddToggle({
+    Name = "Cast Shadow",
+    Default = true,
+    Callback = function(Value2)
+        for _, part in pairs(Selected) do
+            part.CastShadow = Value2
+        end
+    end
+})
+
+Tab:AddSlider({
+    Name = "Reflectance",
+    Min = 0,
+    Max = 1,
+    Default = 0,
+    Color = Color3.fromRGB(0,0,255),
+    Increment = 0.1,
+    ValueName = "Reflectance",
+    Callback = function(Value5)
+        for _, part in pairs(Selected) do
+            part.Reflectance = Value5
+        end
+    end
+})
+
+OrionLib:Init()
+
+
+
+
+
