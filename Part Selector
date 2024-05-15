@@ -109,12 +109,15 @@ Tab:AddButton({
                     if not part.Anchored then
                         Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
                         part.CanCollide = false
+                        wait(1)
+                         part.CanCollide = true
                         UnhighlightPart(part)
                         local index = table.find(Selected, part)
                         if index then
                             table.remove(Selected, index)
                         end
-                        wait(1)
+      
+        
                     end
                 end
             end
@@ -233,8 +236,6 @@ Tab:AddSlider({
 })
 
 OrionLib:Init()
-
-
 
 
 
