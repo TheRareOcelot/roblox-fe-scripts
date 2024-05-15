@@ -1,0 +1,556 @@
+ local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local Window = Rayfield:CreateWindow({
+    Name = "Protonix Hub",
+    LoadingTitle = "Loading Protonix Hub...",
+    LoadingSubtitle = "Please Wait...",
+    ConfigurationSaving = {
+        Enabled    = true,
+        FolderName = nil, -- Create a custom folder for your hub/game
+        FileName   = "ProtonixHub"
+    },
+       Discord = {
+           Enabled = true,
+           Invite = "https://discord.gg/hNA6g6yQ9H", -- The Discord invite code, do not include discord.gg/
+           RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+       },
+    KeySystem = false, -- Set this to true to use our key system
+    KeySettings = {
+        Title = "Protonix Hub",
+        Subtitle = "Key System",
+        Note = "Protonix Hub",
+        FileName = "Protonix Hub",
+        SaveKey = true,
+        GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+        Key = "ProtonixHub"
+    }
+})
+ 
+function notif(title, text, dur, ico)
+   game.StarterGui:SetCore("SendNotification", {
+       Title = title,
+       Text = text,
+       Duration = dur,
+       Icon = ico
+   })
+end
+ 
+Rayfield:Notify({
+   Title = "Protonix Hub",
+   Content = "Successfully Loaded Protonix Hub! Have Fun Exploiting, "..game.Players.LocalPlayer.DisplayName.."!",
+   Duration = 6.5,
+   Image = game.Players:GetUserThumbnailAsync(game.Players.LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size352x352),
+   --[[
+   Actions = { -- Notification Buttons
+       Ignore = {
+           Name = "Okay!",
+           Callback = function()
+               print("The user tapped Okay!")
+           end
+        },
+    },
+   ]]
+})
+Rayfield:Notify({
+   Title = "Announcement",
+   Content = "I know its outdated im not changing it lol",
+   Duration = 6.5,
+   Image = 000000000,
+   --[[
+   Actions = { -- Notification Buttons
+       Ignore = {
+           Name = "Okay!",
+           Callback = function()
+               print("The user tapped Okay!")
+           end
+        },
+    },
+   ]]
+})
+local Tab = Window:CreateTab("World", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Protonix World Gui")
+local Paragraph = Tab:CreateParagraph({Title = "Protonix World Gui", Content = "Gui with many sections where you can control parts, hats, tools and even the chat! You can find telekinesis, chat destroyer, and much, MUCH more!"})
+local Button = Tab:CreateButton({
+    Name = "Execute Protonix World Gui (Recommended)",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Protonix%20World%20Gui"))()
+end,
+})
+
+local Section = Tab:CreateSection("Cool")
+local Button = Tab:CreateButton({
+    Name = "Backdoor Scanner/Executor",
+    Callback = function()
+  loadstring(game:HttpGet(('https://raw.githubusercontent.com/iK4oS/backdoor.exe/master/source.lua'),true))()
+    end,
+})
+local Button = Tab:CreateButton({
+Name = "Raybeam (Layered Clothes)",
+    Callback = function()
+           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Raybeam"))()
+end,
+})
+local Button = Tab:CreateButton({
+Name         = "Map Cover (Layered Clothes)",
+    Callback = function()
+           loadstring(game:HttpGet("https://pastebin.com/raw/uSXxEq4Q"))()
+end,
+})
+
+
+local Section = Tab:CreateSection("Utility")
+local Button = Tab:CreateButton({
+Name = "Display Name Remover",
+    Callback = function()
+           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Display%20Name%20Remover", true))()
+end,
+})
+local Button = Tab:CreateButton({
+    Name = "Rejoin Game",
+    Callback = function()
+game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+end,
+})
+
+
+local Section = Tab:CreateSection("Graphics")
+
+local Button = Tab:CreateButton({
+   Name = "Graphics Enchancer",
+Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/enhancer/main/main"))()
+end,
+})
+
+local Section = Tab:CreateSection("Anti Afks and Etc.")
+local Button  = Tab:CreateButton({
+    Name = "Anti AFK",
+    Callback = function()
+           loadstring(game:HttpGet("https://pastebin.com/raw/sDXcYFhR", true))()
+end,
+})
+local Button = Tab:CreateButton({
+   Name = "Anti Report",
+Callback = function()
+   loadstring(game:HttpGet('https://pastebin.com/raw/R1B51WkT'))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Anti-Lag",
+    Callback = function()
+         loadstring(game:HttpGet("https://pastebin.com/raw/RW7ZT29m"))()
+end,
+})
+  local Button = Tab:CreateButton({
+Name = "Anti Fling",
+    Callback = function()
+loadstring(game:HttpGet'https://pastebin.com/raw/H07STWSQ')()
+end,
+})
+
+local Tab     = Window:CreateTab("Player", 4483362458)
+local Button = Tab:CreateButton({
+    Name = "Normalize",
+    Callback = function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+wait(0.1)
+game.Workspace.Gravity = 200
+wait(0.1)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+wait(0.1)
+game.Players.LocalPlayer.Character.Humanoid.HipHeight = 0
+end,
+})
+
+
+local Section = Tab:CreateSection("Walkspeed")
+local Slider  = Tab:CreateSlider({
+    Name         = "Walkspeed",
+    Range        = {0, 200},
+    Increment    = 1,
+    Suffix       = "Walkspeed",
+    CurrentValue = 16,
+    Flag         = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback     = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end,
+})
+local Input = Tab:CreateInput({
+    Name = "Walkspeed (Setter)",
+    PlaceholderText = "Speed",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(SText)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = SText
+ 
+    end,
+})
+local Section = Tab:CreateSection("Jumppower")
+local Slider = Tab:CreateSlider({
+    Name         = "JumpPower",
+    Range        = {0, 200},
+    Increment    = 1,
+    Suffix       = "JumpPower",
+    CurrentValue = 50,
+    Flag         = "Slider2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback     = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+    end,
+})
+local Input = Tab:CreateInput({
+    Name = "JumpPower (Setter)",
+    PlaceholderText = "Power",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Text)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Text
+ 
+    end,
+})
+local Section = Tab:CreateSection("HipHeight")
+local Slider = Tab:CreateSlider({
+    Name         = "HipHeight",
+    Range        = {0, 200},
+    Increment    = 1,
+    Suffix       = "HipHeight",
+    CurrentValue = 0,
+    Flag         = "Slider3", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback     = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.HipHeight = Value
+    end,
+})
+local Input = Tab:CreateInput({
+    Name = "HipHeight (Setter)",
+    PlaceholderText = "Height",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(HText)
+        game.Players.LocalPlayer.Character.Humanoid.HipHeight = HText
+ 
+    end,
+})
+local Section = Tab:CreateSection("Gravity")
+local Slider = Tab:CreateSlider({
+    Name         = "Gravity",
+    Range        = {0, 200},
+    Increment    = 1,
+    Suffix       = "Gravity",
+    CurrentValue = 200,
+    Flag         = "Gravity", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback     = function(Value)
+        game.Workspace.Gravity = Value
+    end,
+})
+local Input = Tab:CreateInput({
+    Name = "Gravity (Setter)",
+    PlaceholderText = "Gravity",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(GText)
+        game.Workspace.Gravity =  GText
+ 
+    end,
+}) 
+
+local Section = Tab:CreateSection("Main")
+
+local Button = Tab:CreateButton({
+Name = "Infinite Jump",
+    Callback = function()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/infinite%20jump", true))()
+end,
+})
+
+local Section = Tab:CreateSection("Basic")
+
+local Button = Tab:CreateButton({
+Name = "Netless Bypass",
+    Callback = function()
+             loadstring(game:HttpGet("https://pastebin.com/raw/DUc29mew", true))()
+end,
+})
+local Toggle = Tab:CreateToggle({
+    Name = "Sit",
+    CurrentValue = false,
+    Flag = "Togkjldsgle4", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = Value
+    end,
+})
+local Toggle = Tab:CreateToggle({
+    Name = "Rotate",
+    CurrentValue = true,
+    Flag = "Todfghggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = Value
+    end,
+})
+local Toggle = Tab:CreateToggle({
+    Name = "Stand",
+    CurrentValue = true,
+    Flag = "Todfghdfgh", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+if Value == false then
+game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
+else
+game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+end
+    end,
+})
+local Toggle = Tab:CreateToggle({
+    Name = "Use Jumppower",
+    CurrentValue = true,
+    Flag = "Togdfsggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+if Value == false then
+game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = false
+else
+game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
+end
+    end,
+})
+
+local Button = Tab:CreateButton({
+Name = "Space Walk",
+    Callback = function()
+ game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 8
+wait(0.1)
+game.Workspace.Gravity = 20
+wait(0.1)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 15
+end,
+})
+
+
+local Tab = Window:CreateTab("Avatar", 4483362458)
+local Paragraph = Tab:CreateParagraph({Title = "Warning", Content = "Do not try to add multiple scripts (For the avatar) at once as it breaks easily"})
+Tab:CreateSection("Netless Bypass")
+local Button = Tab:CreateButton({
+Name = "Netless Bypass",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/DUc29mew", true))()
+end,
+})
+local Button = Tab:CreateButton({
+    Name = "Avatar Resizer",
+    Callback = function()
+loadstring(game:HttpGet(('https://pastebin.com/raw/ZWVY9r7Q')))()
+end,
+})
+local Section = Tab:CreateSection("Limbs")
+
+local Button = Tab:CreateButton({
+    Name = "Blockhead",
+    Callback = function()
+game.Players.LocalPlayer.Character.Head.Mesh:Remove()
+ 
+end,
+})
+
+
+local Section = Tab:CreateSection("Morphs")
+
+local Button = Tab:CreateButton({
+Name = "Be a Wall ",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/AY6kA2AV", true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Be a chair ",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/uN6c86e1", true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Be a table ",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/9kDrHnUd", true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Be a Creeper ",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/GDKYs5Ec",true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Be a Car ",
+    Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MonkoTubeYT/carscript/master/!carscript.lua',true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Arm Stack",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/penis/main/main"))()
+end,
+})
+
+local Button = Tab:CreateButton({
+Name = "Be a ball",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/EJskzezp", true))()
+end,
+})
+
+
+local Tab     = Window:CreateTab("Combat", 4483362458)
+local Button = Tab:CreateButton({
+   Name = "Normalize (Yourself)",
+   Callback = function()
+   game.Players.LocalPlayer.Character.Humanoid.Health = 0
+   if _G.Enable == true then
+   _G.Enable = false
+end
+   end,
+})
+  local Button = Tab:CreateButton({
+Name = "Unnamed ESP",
+    Callback = function()
+loadstring(game:HttpGet'https://ic3w0lf.xyz/rblx/protoesp.lua')()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Sword AI",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yeerma/1/main/bot", true))()
+end,
+}) 
+
+local Button = Tab:CreateButton({
+Name = "Loop Fling All",
+    Callback = function()
+loadstring(game:HttpGet('https://github.com/DigitalityScripts/roblox-scripts/raw/main/loop fling all'))()
+end,
+})
+  local Button = Tab:CreateButton({
+Name = "Anti Fling",
+    Callback = function()
+loadstring(game:HttpGet'https://pastebin.com/raw/H07STWSQ')()
+end,
+})
+ 
+local Tab = Window:CreateTab("Animations", 4483362458)
+local Section = Tab:CreateSection("Netless Bypass")
+local Button = Tab:CreateButton({
+Name = "Netless Bypass",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/DUc29mew", true))()
+end,
+})
+local Section = Tab:CreateSection("Animations")
+ if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").RigType == Enum.HumanoidRigType.R6 then
+local Button = Tab:CreateButton({
+Name = "R6 Animations",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/qbexdLb3", true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Energizer Animations",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/RmD3qNp7", true))()
+end,
+})
+elseif game.Players.LocalPlayer.Character:WaitForChild("Humanoid").RigType == Enum.HumanoidRigType.R15 then
+local Button = Tab:CreateButton({
+Name = "R15 Animations",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/x9BkBh0m", true))()
+end,
+})
+
+ 
+local Button = Tab:CreateButton({ 
+Name = "All Roblox Emotes ( , )",
+    Callback = function()   loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Gi7331/scripts/main/Emote.lua"))()
+    end,
+})
+end
+local Section = Tab:CreateSection("Popular")
+
+
+local Button = Tab:CreateButton({
+Name = "Flip (E)",
+    Callback = function()
+             loadstring(game:HttpGet(('https://pastebin.com/raw/8f2B8iPc')))()
+end,
+})
+local Button = Tab:CreateButton({
+Name         = "Seizure (Z)",
+    Callback = function()
+          loadstring(game:HttpGet('https://raw.githubusercontent.com/yeerma/1/main/my-back'))()
+end,
+})
+local Button = Tab:CreateButton({
+    Name = "Parkour V6",
+    Callback = function()           
+loadstring(game:HttpGet("https://pastebin.com/raw/R5YR13pG", true))()
+   end   
+})
+
+local Tab = Window:CreateTab("Admin/Utility", 4483362458)
+local Section = Tab:CreateSection("Admins")
+local Button = Tab:CreateButton({
+Name = "Infinity Yield",
+    Callback = function()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Reviz Admin",
+    Callback = function()
+loadstring(game:HttpGet(('https://pastebin.com/raw/KNUzQPYS'),true))()
+end,
+})
+
+local Section = Tab:CreateSection("Utility")
+
+local Button = Tab:CreateButton({
+Name = "Anti-AFK",
+    Callback = function()
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/antiafk/main/main"))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Anti-Lag",
+    Callback = function()
+         loadstring(game:HttpGet("https://pastebin.com/raw/RW7ZT29m"))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Empty Server Finder",
+    Callback = function()
+           loadstring(game:HttpGet("https://pastebin.com/raw/aASY68Ns", true))()
+end,
+})
+local Section = Tab:CreateSection("Reanimate")
+  local Button = Tab:CreateButton({
+Name = "Netless Bypass",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/DUc29mew", true))()
+end,
+})
+  local Button = Tab:CreateButton({
+Name = "Reanimate Script",
+    Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/c5VxYv4p"))()
+end,
+})
+  local Button = Tab:CreateButton({
+Name = "Respawn",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/respawn/main/main"))()
+end,
+})
+  local Button = Tab:CreateButton({
+Name = "Rejoin",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/rejoin/main/main"))()
+end,
+})
+
+
+
+
+
+
+
+
+
