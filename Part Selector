@@ -1,62 +1,48 @@
 local onoff = true
+local done = false
 local Selected = {}
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Part Selector", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local UserInputService = game:GetService("UserInputService")
+local Player = game.Players.LocalPlayer
+local Mouse = Player:GetMouse()
 
-local Tab = Window:MakeTab({
-    Name = "Main",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-Tab:AddParagraph("About", "Only you can go through and see through parts. Delete All Unanchored is serverside if its not connected to another block. Delete Children and Delete scripts only effect you so its useful for lava and such.")
-Tab:AddParagraph("Credits", "Credits go to the random guy that made the select script for devhub and chatgpt for doing the dirty work and me using my common sense. happy.hunter is really hot btw")
-local Section = Tab:AddSection({
-    Name = "Selector"
-})
-Tab:AddButton({
-    Name = "Start Selector",
-    Callback = function()
+local Boxes = {
+    InUse = {},
+    Cache = {},
+}
 
-        local UserInputService = game:GetService("UserInputService")
-        local Player = game.Players.LocalPlayer
-        local Mouse = Player:GetMouse()
-
-        local Boxes = {
-            InUse = {},
-            Cache = {},
-        }
-
-        local function HighlightPart(part)
-            local box = table.remove(Boxes.Cache, 1) -- retrieves an unused selection box if there is one
-            if onoff == true then
-                if not box then -- creates a box if there wasn't one in the cache
-                    box = Instance.new("SelectionBox")
-                    box.LineThickness = 0.05
-                    box.Adornee = part
-                    box.Parent = workspace
-                end
-                box.Adornee = part
-                table.insert(Boxes.InUse, box)
-            end
+local function HighlightPart(part)
+    local box = table.remove(Boxes.Cache, 1) -- retrieves an unused selection box if there is one
+    if onoff == true then
+        if not box then -- creates a box if there wasn't one in the cache
+            box = Instance.new("SelectionBox")
+            box.LineThickness = 0.05
+            box.Adornee = part
+            box.Parent = workspace
         end
+        box.Adornee = part
+        table.insert(Boxes.InUse, box)
+    end
+end
 
-        local function UnhighlightPart(part)
-            local position, box
-            for i, selection in pairs(Boxes.InUse) do
-                if selection.Adornee == part then
-                    position = i
-                    box = selection
-                end
-            end
-
-            if box then
-                box.Adornee = nil
-                table.insert(Boxes.Cache, table.remove(Boxes.InUse, position))
-            end
+local function UnhighlightPart(part)
+    local position, box
+    for i, selection in pairs(Boxes.InUse) do
+        if selection.Adornee == part then
+            position = i
+            box = selection
         end
+    end
 
+    if box then
+        box.Adornee = nil
+        table.insert(Boxes.Cache, table.remove(Boxes.InUse, position))
+    end
+end
+
+local function selector()
+    if done == false then
         UserInputService.InputBegan:Connect(function(input)
-            if input.KeyCode == Enum.KeyCode.E then
+            if input.KeyCode == Enum.KeyCode.Z then
                 local Target = Mouse.Target
                 local check = table.find(Selected, Target)
 
@@ -80,49 +66,27 @@ Tab:AddButton({
                 end
             end
         end)
+    end
+    done = true
+end
 
-        UserInputService.InputBegan:Connect(function(input)
-            if input.KeyCode == Enum.KeyCode.R then
-                local Target = Mouse.Target
-                local check = table.find(Selected, Target)
-                if Target and check then
-                    UnhighlightPart(Target)
-                    local index = table.find(Selected, Target)
-                    table.remove(Selected, index)
-                end
-            end
-        end)
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Part Selector", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
-        UserInputService.InputEnded:Connect(function(input)
-            if input.KeyCode == Enum.KeyCode.Q then
-                for _, part in pairs(Selected) do
-                    UnhighlightPart(part)
-                end
-                table.clear(Selected)
-            end
-        end)
-
-        -- Teleport and CanCollide functionality when T is pressed
-        UserInputService.InputEnded:Connect(function(input)
-            if input.KeyCode == Enum.KeyCode.T then
-                for _, part in pairs(Selected) do
-                    if not part.Anchored then
-                        Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
-                        part.CanCollide = false
-                        wait(1)
-                         part.CanCollide = true
-                        UnhighlightPart(part)
-                        local index = table.find(Selected, part)
-                        if index then
-                            table.remove(Selected, index)
-                        end
-      
-        
-                    end
-                end
-            end
-        end)
-
+local Tab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+Tab:AddParagraph("About", "Only you can go through and see through parts. Delete All Unanchored is serverside if its not connected to another block. Delete Children and Delete scripts only effect you so its useful for lava and such.")
+Tab:AddParagraph("Credits", "Credits go to the random guy that made the select script for devhub and chatgpt for doing the dirty work and me using my common sense. happy.hunter is really hot btw")
+local Section = Tab:AddSection({
+    Name = "Selector"
+})
+Tab:AddButton({
+    Name = "Start Selector",
+    Callback = function()
+        selector()
     end
 })
 
@@ -135,12 +99,86 @@ Tab:AddToggle({
 })
 
 local Section = Tab:AddSection({
-    Name = "Binds"
+    Name = "Main"
 })
-Tab:AddLabel("Q - Unselect All")
-Tab:AddLabel("E - Select Part")
-Tab:AddLabel("R - Unselect One")
-Tab:AddLabel("T - Delete All Unanchored")
+Tab:AddLabel("Z - Selection")
+
+Tab:AddButton({
+    Name = "Unselect All",
+    Callback = function()
+        for _, part in pairs(Selected) do
+            UnhighlightPart(part)
+        end
+        table.clear(Selected)
+    end
+})
+Tab:AddButton({
+    Name = "Delete All (Unanchored)",
+    Callback = function()
+        local partsToDelete = {}
+
+        -- Collect unanchored parts to delete
+        for _, part in pairs(Selected) do
+            if not part.Anchored then
+                table.insert(partsToDelete, part)
+            end
+        end
+
+        -- Process each part to delete
+        for _, part in pairs(partsToDelete) do
+            Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
+            part.CanCollide = false
+            wait(1)
+            part.CanCollide = true
+            UnhighlightPart(part)
+            local index = table.find(Selected, part)
+            if index then
+                table.remove(Selected, index)
+            end
+        end
+      end     
+})
+Tab:AddButton({
+    Name = "Fling All (Unanchored)",
+    Callback = function()
+        local partsToDelete = {}
+
+        -- Collect unanchored parts to delete
+        for _, part in pairs(Selected) do
+            if not part.Anchored then
+                table.insert(partsToDelete, part)
+            end
+        end
+
+        -- Process each part to delete
+        for _, part in pairs(partsToDelete) do
+            Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
+            part.CanCollide = false
+            power = 20000 -- change this to make it more or less powerful
+ 
+game:GetService('RunService').Stepped:connect(function()
+game.Players.LocalPlayer.Character.Head.CanCollide = false
+game.Players.LocalPlayer.Character.Torso.CanCollide = false
+game.Players.LocalPlayer.Character["Left Leg"].CanCollide = false
+game.Players.LocalPlayer.Character["Right Leg"].CanCollide = false
+end)
+ 
+wait(.1)
+local bambam = Instance.new("BodyThrust")
+bambam.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+bambam.Force = Vector3.new(power,0,power)
+bambam.Location = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+            wait(1)
+            part.CanCollide = true
+            UnhighlightPart(part)
+            local index = table.find(Selected, part)
+            if index then
+                table.remove(Selected, index)
+            end
+        end
+           game.Players.LocalPlayer.Character.Humanoid.Health = 0
+      end     
+})
 
 local Section = Tab:AddSection({
     Name = "Properties"
@@ -191,20 +229,6 @@ Tab:AddButton({
         end
     end    
 })
-Tab:AddButton({
-    Name = "Delete Scripts",
-    Callback = function()
-        for _, part in pairs(Selected) do
-            for _, child in pairs(part:GetChildren()) do
-                if child:IsA("Script") or child:IsA("LocalScript") then
-                    child:Destroy()
-                end
-            end
-        end
-    end    
-})
-
-
 
 local Section = Tab:AddSection({
     Name = "ClientSided Effects"
@@ -236,6 +260,3 @@ Tab:AddSlider({
 })
 
 OrionLib:Init()
-
-
-
