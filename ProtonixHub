@@ -448,6 +448,18 @@ Name = "Energizer Animations",
 loadstring(game:HttpGet("https://pastebin.com/raw/RmD3qNp7", true))()
 end,
 })
+local Button = Tab:CreateButton({
+Name = "Sonic",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Sonic", true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Griddy",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/griddy", true))()
+end,
+})
 elseif game.Players.LocalPlayer.Character:WaitForChild("Humanoid").RigType == Enum.HumanoidRigType.R15 then
 local Button = Tab:CreateButton({
 Name = "R15 Animations",
@@ -545,6 +557,8 @@ Name = "Rejoin",
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/rejoin/main/main"))()
 end,
 })
+
+
 
 
 
