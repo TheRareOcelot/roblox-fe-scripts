@@ -394,6 +394,18 @@ loadstring(game:HttpGet("https://pastebin.com/raw/RmD3qNp7", true))()
 end,
 })
 local Button = Tab:CreateButton({
+Name = "Krystal Dance",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/krystal%20dance", true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Killbot",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/killbot", true))()
+end,
+})
+local Button = Tab:CreateButton({
 Name = "Sonic",
     Callback = function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Sonic", true))()
@@ -513,7 +525,7 @@ end,
 Name = "Rejoin",
     Callback = function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/rejoin/main/main"))()
-end,
+end,wa
 })
 
 
