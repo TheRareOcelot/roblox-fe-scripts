@@ -465,6 +465,19 @@ Tab:AddButton({
                 loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/test/main/Grab%20Tools', true))()
     end    
 })
+  Tab:AddButton({
+    Name     = "Drop Tools",
+    Callback = function()
+                for i,v in pairs(game:GetService("Players").LocalPlayer:WaitForChild("Backpack"):GetChildren()) do
+            if v:IsA("Tool") then
+                v.Parent = game:GetService("Players").LocalPlayer.Character
+                task.wait(0.3)
+                v.Parent = game:GetService("Workspace")
+            end
+        end
+    end    
+})
+
 local Section = Tab:AddSection({
 	Name = "Other"
 })
