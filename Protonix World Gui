@@ -2,7 +2,8 @@ local onoff = true
 local done = false
 local Selected = {}
 local UserInputService = game:GetService("UserInputService")
-local Player = game.Players.LocalPlayer
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
 local Mouse = Player:GetMouse()
 
 local Boxes = {
@@ -40,7 +41,12 @@ local function UnhighlightPart(part)
 end
 
 local function isPlayerPart(part)
-    return part:IsDescendantOf(Player.Character)
+    for _, player in pairs(Players:GetPlayers()) do
+        if part:IsDescendantOf(player.Character) then
+            return true
+        end
+    end
+    return false
 end
 
 local function selector()
@@ -286,7 +292,6 @@ Tab:AddButton({
         end
     end
 })
-
 Tab:AddButton({
     Name = "Delete Vehicle Seats",
     Callback = function()
@@ -408,8 +413,6 @@ Tab:AddSlider({
         end
     end
 })
-
-
 
 local Section = Tab:AddSection({
     Name = "More"
