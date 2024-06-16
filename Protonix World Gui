@@ -563,7 +563,12 @@ Tab:AddTextbox({
 
     end    
 })
-
+Tab:AddButton({
+    Name     = "Fake Chatter",
+    Callback = function()
+                   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/fake%20chatter"))()
+    end    
+})
 
 Tab:AddButton({
     Name     = "See Private Chat",
