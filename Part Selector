@@ -167,7 +167,7 @@ Tab:AddButton({
             if table.find(Selected, part) then -- Ensure the part is still selected
                 Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
                 part.CanCollide = false
-                local power = 4000 -- change this to make it more or less powerful
+                local power = 10000 -- change this to make it more or less powerful
 
                 local thrust = Instance.new("BodyThrust")
                 thrust.Parent = Player.Character.HumanoidRootPart
