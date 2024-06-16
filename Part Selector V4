@@ -2,7 +2,8 @@ local onoff = true
 local done = false
 local Selected = {}
 local UserInputService = game:GetService("UserInputService")
-local Player = game.Players.LocalPlayer
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
 local Mouse = Player:GetMouse()
 
 local Boxes = {
@@ -40,7 +41,12 @@ local function UnhighlightPart(part)
 end
 
 local function isPlayerPart(part)
-    return part:IsDescendantOf(Player.Character)
+    for _, player in pairs(Players:GetPlayers()) do
+        if part:IsDescendantOf(player.Character) then
+            return true
+        end
+    end
+    return false
 end
 
 local function selector()
@@ -167,7 +173,7 @@ Tab:AddButton({
             if table.find(Selected, part) then -- Ensure the part is still selected
                 Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
                 part.CanCollide = false
-                local power = 10000 -- change this to make it more or less powerful
+                local power = 2000 -- change this to make it more or less powerful
 
                 local thrust = Instance.new("BodyThrust")
                 thrust.Parent = Player.Character.HumanoidRootPart
@@ -275,7 +281,6 @@ Tab:AddButton({
         end
     end
 })
-
 Tab:AddButton({
     Name = "Delete Vehicle Seats",
     Callback = function()
@@ -399,5 +404,7 @@ Tab:AddSlider({
 })
 
 OrionLib:Init()
+
+
 
 
