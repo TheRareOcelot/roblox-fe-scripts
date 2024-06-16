@@ -39,6 +39,10 @@ local function UnhighlightPart(part)
     end
 end
 
+local function isPlayerPart(part)
+    return part:IsDescendantOf(Player.Character)
+end
+
 local function selector()
     if done == false then
         UserInputService.InputBegan:Connect(function(input)
@@ -46,7 +50,7 @@ local function selector()
                 local Target = Mouse.Target
                 local check = table.find(Selected, Target)
 
-                if Target and Target.Parent then
+                if Target and Target.Parent and not isPlayerPart(Target) then
                     if check then
                         UnhighlightPart(Target)
                         local index = table.find(Selected, Target)
@@ -61,8 +65,10 @@ local function selector()
                     end
                     table.clear(Selected)
 
-                    HighlightPart(Target)
-                    table.insert(Selected, Target)
+                    if Target and not isPlayerPart(Target) then
+                        HighlightPart(Target)
+                        table.insert(Selected, Target)
+                    end
                 end
             end
         end)
@@ -74,10 +80,6 @@ local function stopFling()
     for _, part in pairs(Selected) do
         part.CanCollide = true
     end
-end
-
-local function isPlayerPart(part)
-    return part:IsDescendantOf(Player.Character)
 end
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
@@ -117,7 +119,7 @@ Tab:AddButton({
     Name = "Select All Unanchored Parts",
     Callback = function()
         for _, part in ipairs(game.Workspace:GetDescendants()) do
-            if part:IsA("BasePart") and not part.Anchored and not table.find(Selected, part) then
+            if part:IsA("BasePart") and not part.Anchored and not table.find(Selected, part) and not isPlayerPart(part) then
                 HighlightPart(part)
                 table.insert(Selected, part)
             end
@@ -141,49 +143,51 @@ Tab:AddButton({
         stopFling()
     end
 })
+
 Tab:AddButton({
     Name = "Fling All (Unanchored)",
     Callback = function()
-        local partsToDelete = {}
+        local partsToFling = {}
 
-        -- Collect unanchored parts to delete
+        -- Collect unanchored parts to fling
         for _, part in pairs(Selected) do
             if not part.Anchored and not isPlayerPart(part) then
-                table.insert(partsToDelete, part)
+                table.insert(partsToFling, part)
             end
         end
 
         -- Check if there are any unanchored parts to fling
-        if #partsToDelete == 0 then
+        if #partsToFling == 0 then
             print("No unanchored parts to fling.")
             return
         end
 
         -- Process each part to fling
-        for _, part in pairs(partsToDelete) do
-            Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
-            part.CanCollide = false
-            local power = 20000 -- change this to make it more or less powerful
+        for _, part in pairs(partsToFling) do
+            if table.find(Selected, part) then -- Ensure the part is still selected
+                Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
+                part.CanCollide = false
+                local power = 2000 -- change this to make it more or less powerful
 
-            local thrust = Instance.new("BodyThrust")
-            thrust.Parent = Player.Character.HumanoidRootPart
-            thrust.Force = Vector3.new(power, 0, power)
-            thrust.Location = Player.Character.HumanoidRootPart.Position
+                local thrust = Instance.new("BodyThrust")
+                thrust.Parent = Player.Character.HumanoidRootPart
+                thrust.Force = Vector3.new(power, 0, power)
+                thrust.Location = Player.Character.HumanoidRootPart.Position
 
-            wait(1)
-            thrust:Destroy()
-            part.CanCollide = true
-            UnhighlightPart(part)
-            local index = table.find(Selected, part)
-            if index then
-                table.remove(Selected, index)
+                wait(1)
+                thrust:Destroy()
+                part.CanCollide = true
+                UnhighlightPart(part)
+                local index = table.find(Selected, part)
+                if index then
+                    table.remove(Selected, index)
+                end
             end
         end
 
         stopFling()
     end     
 })
-
 
 local Section = Tab:AddSection({
     Name = "Delete Unanchored Parts"
@@ -201,14 +205,16 @@ Tab:AddButton({
         end
 
         for _, part in pairs(partsToDelete) do
-            Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
-            part.CanCollide = false
-            wait(1)
-            part.CanCollide = true
-            UnhighlightPart(part)
-            local index = table.find(Selected, part)
-            if index then
-                table.remove(Selected, index)
+            if table.find(Selected, part) then -- Ensure the part is still selected
+                Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
+                part.CanCollide = false
+                wait(1)
+                part.CanCollide = true
+                UnhighlightPart(part)
+                local index = table.find(Selected, part)
+                if index then
+                    table.remove(Selected, index)
+                end
             end
         end
     end
@@ -226,16 +232,18 @@ Tab:AddButton({
         end
 
         for _, part in pairs(partsToDelete) do
-            Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
-            part.CanCollide = false
-            wait(0.5)
-            game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Jump = true
-            wait(0.5)
-            part.CanCollide = true
-            UnhighlightPart(part)
-            local index = table.find(Selected, part)
-            if index then
-                table.remove(Selected, index)
+            if table.find(Selected, part) then -- Ensure the part is still selected
+                Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
+                part.CanCollide = false
+                wait(0.5)
+                game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Jump = true
+                wait(0.5)
+                part.CanCollide = true
+                UnhighlightPart(part)
+                local index = table.find(Selected, part)
+                if index then
+                    table.remove(Selected, index)
+                end
             end
         end
     end
@@ -253,14 +261,16 @@ Tab:AddButton({
         end
 
         for _, part in pairs(partsToDelete) do
-            Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
-            part.CanCollide = false
-            wait(1)
-            part.CanCollide = true
-            UnhighlightPart(part)
-            local index = table.find(Selected, part)
-            if index then
-                table.remove(Selected, index)
+            if table.find(Selected, part) then -- Ensure the part is still selected
+                Player.Character:SetPrimaryPartCFrame(CFrame.new(part.Position + Vector3.new(0, 5, 0)))
+                part.CanCollide = false
+                wait(1)
+                part.CanCollide = true
+                UnhighlightPart(part)
+                local index = table.find(Selected, part)
+                if index then
+                    table.remove(Selected, index)
+                end
             end
         end
     end
