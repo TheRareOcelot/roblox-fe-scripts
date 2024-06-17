@@ -459,6 +459,67 @@ Tab:AddButton({
               loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Dupe%20Tools%20Main%20Script.md'))()
     end    
 })  
+Tab:AddButton({
+    Name     = "Loop Drop (Reclick to Disable)",
+    Callback = function()
+                
+
+        local oldposti = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
+        getgenv().lol = not getgenv().lol
+        task.spawn(function()
+            while true do task.wait()
+                if not getgenv().lol then
+                    wait(10)
+                    game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = oldposti
+                    break
+                end
+                local tools = {}
+                for i, v in pairs(game:GetService("Players").LocalPlayer:WaitForChild("Backpack"):GetDescendants()) do
+                    if v:IsA("Tool") then
+                        table.insert(tools, v)
+                    end
+                end
+
+
+                for _, tool in ipairs(tools) do
+                    toolPart = tool:FindFirstChildWhichIsA("Part")
+                    if toolPart then
+                        tool.Parent = game:GetService("Players").LocalPlayer.Character 
+                        task.wait()
+                        tool.Parent = game:GetService("Workspace")
+                        task.wait()
+                    end
+                end
+                game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health = 0
+                wait(10)
+                for i, v in pairs(game:GetService("Workspace"):GetChildren()) do
+                    if v:IsA("Tool") then
+                        game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChildWhichIsA("Part").CFrame
+                        task.wait(0.25)
+                    end
+                end
+                wait(4)
+                for i, v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+                    if v:IsA("Tool") then
+                        v.Parent = game:GetService("Players").LocalPlayer:WaitForChild("Backpack")
+                        task.wait()
+                    end
+                end
+                wait(1)
+            end
+        end)
+    end    
+})  
+  Tab:AddButton({
+    Name     = "Equip All Tools",
+    Callback = function()
+                for i,v in pairs(game:GetService("Players").LocalPlayer:WaitForChild("Backpack"):GetChildren()) do
+            if v:IsA("Tool") then
+                v.Parent = game:GetService("Players").LocalPlayer.Character
+            end
+        end
+    end    
+})
   Tab:AddButton({
     Name     = "Grab Tools",
     Callback = function()
