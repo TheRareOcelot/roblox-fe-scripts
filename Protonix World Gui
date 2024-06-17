@@ -649,7 +649,100 @@ Tab:AddButton({
                    loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/fake%20chatter"))()
     end    
 })
+Tab:AddButton({
+    Name     = "Message On Death",
+    Callback = function()
+               getgenv().hurtmessages = {
+            "That hurt!",
+            "Watch where you're swinging!",
+            "Ow! That's gonna leave a mark!",
+            "Stop attacking me!",
+            "I'm not feeling so good...",
+            "Is that all you've got?",
+            "Can't catch a break!",
+            "That was a cheap shot!",
+            "You'll regret that!"
+    "What the sigma?"
+    "really bruh"
+         }
+local player = game.Players.LocalPlayer
 
+if player.Character then
+    local humanoid = player.Character:WaitForChild("Humanoid")
+    local previousHealth = humanoid.Health
+
+    humanoid.Changed:Connect(function()
+        if humanoid.Health < previousHealth then
+            local randomIndex = math.random(1, #getgenv().hurtmessages)
+            local message = getgenv().hurtmessages[randomIndex]
+
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        end
+        
+        previousHealth = humanoid.Health
+    end)
+end
+
+player.CharacterAdded:Connect(function(char)
+    local humanoid = char:WaitForChild("Humanoid")
+    local previousHealth = humanoid.Health
+
+    humanoid.Changed:Connect(function()
+        if humanoid.Health < previousHealth then
+            local randomIndex = math.random(1, #getgenv().hurtmessages)
+            local message = getgenv().hurtmessages[randomIndex]
+
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        end
+        
+        previousHealth = humanoid.Health
+    end)
+end)
+    end    
+})
+Tab:AddButton({
+    Name     = "Auto Excuse",
+    Callback = function()
+              getgenv().hurtmessages = {
+      "i was lagging"
+"that wasnt fair", "You will pay for this", "What a noob", "I will not let you get away with that", "Are you serious dude", "You will regret this", "That is a grave mistake",
+"I will make you suffer you little ****", "You son of a ****", "Are you out of your mind", "What the hell is wrong with you","I will find you","That isn't nice dude","Karma will hit you back","U USED HAX!!", "AIMBOT AIMBOT AIMBOT", "THATS NOT NICE", "Bruh thats all luck"
+         }
+local player = game.Players.LocalPlayer
+
+if player.Character then
+    local humanoid = player.Character:WaitForChild("Humanoid")
+    local previousHealth = humanoid.Health
+
+    humanoid.Changed:Connect(function()
+        if humanoid.Health < previousHealth then
+            local randomIndex = math.random(1, #getgenv().hurtmessages)
+            local message = getgenv().hurtmessages[randomIndex]
+
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        end
+        
+        previousHealth = humanoid.Health
+    end)
+end
+
+player.CharacterAdded:Connect(function(char)
+    local humanoid = char:WaitForChild("Humanoid")
+    local previousHealth = humanoid.Health
+
+    humanoid.Changed:Connect(function()
+        if humanoid.Health < previousHealth then
+            local randomIndex = math.random(1, #getgenv().hurtmessages)
+            local message = getgenv().hurtmessages[randomIndex]
+
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        end
+        
+        previousHealth = humanoid.Health
+    end)
+end)
+    end    
+})
 Tab:AddButton({
     Name     = "See Private Chat",
     Callback = function()
