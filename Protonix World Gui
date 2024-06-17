@@ -454,6 +454,12 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
+    Name     = "Tool Rotator (Re-equip to use)",
+    Callback = function()
+              loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/test/main/Tool%20Rotator'))()
+    end    
+})  
+Tab:AddButton({
     Name     = "Dupe Tools",
     Callback = function()
               loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Dupe%20Tools%20Main%20Script.md'))()
