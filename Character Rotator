@@ -1,0 +1,82 @@
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ArrowButtonsGui"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 160, 0, 100)
+frame.Position = UDim2.new(0.5, -125, 0.5, -50)
+frame.BackgroundTransparency = 0
+frame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+frame.BorderSizePixel = 0
+frame.Parent = screenGui
+
+local frameCorner = Instance.new("UICorner")
+frameCorner.CornerRadius = UDim.new(0, 10)
+frameCorner.Parent = frame
+
+
+frame.Active = true
+frame.Draggable = true
+
+
+local leftButton = Instance.new("TextButton")
+leftButton.Size = UDim2.new(0, 50, 0, 50)
+leftButton.Position = UDim2.new(0, 25, 0.5, -25)
+leftButton.Text = "<"
+leftButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+leftButton.TextColor3 = Color3.new(1, 1, 1) 
+leftButton.BorderColor3 = Color3.new(1, 1, 1) 
+leftButton.BorderSizePixel = 2
+leftButton.Parent = frame
+
+
+local leftButtonCorner = Instance.new("UICorner")
+leftButtonCorner.CornerRadius = UDim.new(0, 10)
+leftButtonCorner.Parent = leftButton
+
+
+local rightButton = Instance.new("TextButton")
+rightButton.Size = UDim2.new(0, 50, 0, 50)
+rightButton.Position = UDim2.new(1, -75, 0.5, -25)
+rightButton.Text = ">"
+rightButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3) 
+rightButton.TextColor3 = Color3.new(1, 1, 1)
+rightButton.BorderColor3 = Color3.new(1, 1, 1) 
+rightButton.BorderSizePixel = 2
+rightButton.Parent = frame
+
+
+local rightButtonCorner = Instance.new("UICorner")
+rightButtonCorner.CornerRadius = UDim.new(0, 10)
+rightButtonCorner.Parent = rightButton
+
+
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0, 20, 0, 20)
+closeButton.Position = UDim2.new(1, -25, 0, 5)
+closeButton.Text = "X"
+closeButton.BackgroundColor3 = Color3.new(1, 0, 0) 
+closeButton.TextColor3 = Color3.new(1, 1, 1) 
+closeButton.BorderColor3 = Color3.new(1, 1, 1)
+closeButton.BorderSizePixel = 2
+closeButton.Parent = frame
+
+
+local closeButtonCorner = Instance.new("UICorner")
+closeButtonCorner.CornerRadius = UDim.new(0, 5)
+closeButtonCorner.Parent = closeButton
+
+
+closeButton.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
+end)
+
+leftButton.MouseButton1Click:Connect(function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(30), 0)
+end)
+
+rightButton.MouseButton1Click:Connect(function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(-30), 0)
+end)
