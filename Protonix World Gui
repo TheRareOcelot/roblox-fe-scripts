@@ -731,8 +731,8 @@ Tab:AddButton({
             "Is that all you've got?",
             "Can't catch a break!",
             "That was a cheap shot!",
-            "You'll regret that!"
-    "What the sigma?"
+            "You'll regret that!",
+    "What the sigma?",
     "really bruh"
          }
 local player = game.Players.LocalPlayer
@@ -774,7 +774,7 @@ Tab:AddButton({
     Name     = "Auto Excuse",
     Callback = function()
               getgenv().hurtmessages = {
-      "i was lagging"
+      "i was lagging",
 "that wasnt fair", "You will pay for this", "What a noob", "I will not let you get away with that", "Are you serious dude", "You will regret this", "That is a grave mistake",
 "I will make you suffer you little ****", "You son of a ****", "Are you out of your mind", "What the hell is wrong with you","I will find you","That isn't nice dude","Karma will hit you back","U USED HAX!!", "AIMBOT AIMBOT AIMBOT", "THATS NOT NICE", "Bruh thats all luck"
          }
