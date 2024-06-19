@@ -76,27 +76,80 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/ma
 end,
 })
 
-local Section = Tab:CreateSection("Cool")
+local Section = Tab:CreateSection("Backdoors")
 local Button = Tab:CreateButton({
-    Name = "Backdoor Scanner/Executor",
+    Name = "backdoor.exe",
     Callback = function()
   loadstring(game:HttpGet(('https://raw.githubusercontent.com/iK4oS/backdoor.exe/master/source.lua'),true))()
     end,
 })
 local Button = Tab:CreateButton({
-Name = "Raybeam (Layered Clothes)",
-    Callback = function()
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Raybeam"))()
-end,
+	Name = "Backdoor.exe",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/iK4oS/backdoor.exe/master/source.lua"))()
+	end,
 })
 local Button = Tab:CreateButton({
-Name         = "Map Cover (Layered Clothes)",
-    Callback = function()
-           loadstring(game:HttpGet("https://pastebin.com/raw/uSXxEq4Q"))()
-end,
+	Name = "Backdoor.exe V6",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/iK4oS/backdoor.exe/v6/source.lua"))()
+	end,
 })
+local Button = Tab:CreateButton({
+	Name = "Backdoor.exe V6x",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/iK4oS/backdoor.exe/v6x/source.lua"))()
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "Backdoor.exe V8",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/iK4oS/backdoor.exe/v8/src/main.lua"))();
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "fork of backdoor.exe?",
+		Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub-Backup/main/FE/BackDoor/fork.txt"))()
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "Frakture SS",
 
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub-Backup/main/FE/BackDoor/Frakture%20SS.txt"))()
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "jalon's backdeer skenner",
 
+	Callback = function()
+		--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/jLn0n/scripts/main/backdoor-executor/backdoor-executor.lua"))()
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "k4scripts",
+
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub-Backup/main/FE/BackDoor/forker.txt"))()
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "og backdoor.exe?",
+
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub-Backup/main/FE/BackDoor/og.txt"))()
+	end,
+})
+local Button = Tab:CreateButton({
+	Name = "TntmasterSS",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub-Backup/main/FE/BackDoor/tntmasterss.txt"))()
+	end,
+})
 local Section = Tab:CreateSection("Utility")
 local Button = Tab:CreateButton({
 Name = "Display Name Remover",
@@ -115,7 +168,7 @@ end,
 local Section = Tab:CreateSection("Graphics")
 
 local Button = Tab:CreateButton({
-   Name = "Graphics Enchancer",
+   Name = "Graphics Enhancer",
 Callback = function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/enhancer/main/main"))()
 end,
@@ -255,20 +308,145 @@ Name = "Death",
 end,
 })
 local Button = Tab:CreateButton({
+Name = "Ghost",
+    Callback = function()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/invisible", true))()
+end,
+})
+ local Button = Tab:CreateButton({
+Name = "Fly",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+end,
+})
+local Button = Tab:CreateButton({
 Name = "Infinite Jump",
     Callback = function()
              loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/infinite%20jump", true))()
 end,
 })
 
+local Section = Tab:CreateSection("Silly")
+
+local Button = Tab:CreateButton({
+Name = "Walk On Walls",
+    Callback = function()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/walk%20on%20walls", true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Portal Gun",
+    Callback = function()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/portal%20gun", true))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Rewind Time",
+    Callback = function()
+               --Credits
+        --https://v3rmillion.net/showthread.php?tid=1202396
+        local key = "E" --key to intiate the flashback. see https://create.roblox.com/docs/reference/engine/enums/KeyCode for an exhaustive list
+        local flashbacklength = 60 --how long the flashback should be stored in approx seconds
+        local flashbackspeed = 1 --how many frames to skip during flashback (set to 0 to disable)
+
+        local name = game:GetService("RbxAnalyticsService"):GetSessionId() --unique id that games cannot access but does not change on subsequent executions (used for the name of the binded function)
+        local frames,uis,LP,RS = {},game:GetService("UserInputService"),game:GetService("Players").LocalPlayer,game:GetService("RunService") --set some vars
+
+        pcall(RS.UnbindFromRenderStep,RS,name) --unbind the function if previously binded
+
+        local function getchar()
+        return LP.Character or LP.CharacterAdded:Wait()
+        end
+
+        function gethrp(c) --gethrp ripped from my env script and stripped of arguments
+        return c:FindFirstChild("HumanoidRootPart") or c.RootPart or c.PrimaryPart or c:FindFirstChild("Torso") or c:FindFirstChild("UpperTorso") or c:FindFirstChildWhichIsA("BasePart")
+        end
+
+        local flashback = {lastinput=false,canrevert=true}
+
+        function flashback:Advance(char,hrp,hum,allowinput)
+        
+        if #frames>flashbacklength*60 then --make sure we don't have too much history
+            table.remove(frames,1)
+        end
+        
+        if allowinput and not self.canrevert then
+            self.canrevert = true
+        end
+        
+        if self.lastinput then --make sure platformstand goes back to normal
+            hum.PlatformStand = false
+            self.lastinput = false
+        end
+        
+        table.insert(frames,{
+            hrp.CFrame,
+            hrp.Velocity,
+            hum:GetState(),
+            hum.PlatformStand,
+            char:FindFirstChildOfClass("Tool")
+        })
+        end
+
+        function flashback:Revert(char,hrp,hum)
+        local num = #frames
+        if num==0 or not self.canrevert then --add to history and return if no history is present
+            self.canrevert = false
+            self:Advance(char,hrp,hum)
+            return
+        end
+        for i=1,flashbackspeed do --skip frames (if enabled)
+            table.remove(frames,num)
+            num=num-1
+        end
+        self.lastinput = true
+        local lastframe = frames[num]
+        table.remove(frames,num)
+        hrp.CFrame = lastframe[1]
+        hrp.Velocity = -lastframe[2]
+        hum:ChangeState(lastframe[3])
+        hum.PlatformStand = lastframe[4] --platformstand to make flying look normal again
+        local currenttool = char:FindFirstChildOfClass("Tool")
+        if lastframe[5] then --equip/unequip tools
+            if not currenttool then
+                hum:EquipTool(lastframe[5])
+            end
+        else
+            hum:UnequipTools()
+        end
+        end
+
+        local function step() --function that runs every frame
+        local char = getchar()
+        local hrp = gethrp(char)
+        local hum = char:FindFirstChildWhichIsA("Humanoid")
+        if uis:IsKeyDown(Enum.KeyCode[key]) then --begin flashback
+            flashback:Revert(char,hrp,hum)
+        else
+            flashback:Advance(char,hrp,hum,true)
+        end
+        end
+        RS:BindToRenderStep(name,1,step) --finally, bind our function
+
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Upside Down",
+    Callback = function()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Upside%20Down", true))()
+end,
+})
 local Section = Tab:CreateSection("Basic")
 
 local Button = Tab:CreateButton({
-Name = "Netless Bypass",
+Name = "Rotate Character",
     Callback = function()
-             loadstring(game:HttpGet("https://pastebin.com/raw/DUc29mew", true))()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Character%20Rotator", true))()
 end,
 })
+
+
+
 local Toggle = Tab:CreateToggle({
     Name = "Sit",
     CurrentValue = false,
@@ -286,6 +464,85 @@ local Toggle = Tab:CreateToggle({
     end,
 })
 local Toggle = Tab:CreateToggle({
+    Name = "Click to Lift",
+    CurrentValue = true,
+    Flag = "Todf22fle1",
+    Callback = function(Value)
+        -- Services
+        local player = game:GetService("Players").LocalPlayer
+        local mouse = player:GetMouse()
+        local camera = game:GetService("Workspace").CurrentCamera
+        local ts = game:GetService("TweenService")
+        local runService = game:GetService("RunService")
+
+        -- Functions
+        local function createTween(part, cframe, ttime)
+            local tweenInfo = TweenInfo.new(ttime)
+            local tween = ts:Create(part, tweenInfo, {CFrame = cframe})
+            tween:Play()
+            tween.Completed:Wait()
+        end
+
+        -- Instances
+        local outline = Instance.new("Highlight")
+
+        -- Variables
+        local target = nil
+
+        -- Mouse Events
+        mouse.Button1Up:Connect(function()
+            if mouse.Target then
+                local model = mouse.Target:FindFirstAncestorOfClass("Model")
+                if model and model:FindFirstChild("Humanoid") then
+                    camera.CameraSubject = model.Humanoid
+                    target = model
+                else
+                    outline.Parent = nil
+                end
+            end
+        end)
+
+        -- RunService Events
+        runService.RenderStepped:Connect(function()
+            if player.Character:FindFirstChild("HumanoidRootPart") then
+                player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+                if target and target:FindFirstChild("HumanoidRootPart") then
+                    if target.HumanoidRootPart.Position.Y + 20 < player.Character.HumanoidRootPart.Position.Y then
+                        if tween then
+                            tween:Cancel()
+                        end
+                    end
+                end
+            end
+
+            if mouse.Target then
+                local model = mouse.Target:FindFirstAncestorOfClass("Model")
+                if model and model:FindFirstChild("Humanoid") then
+                    outline.Parent = model
+                else
+                    outline.Parent = nil
+                end
+            end
+        end)
+
+        -- Main Loop
+        while Value and task.wait() do
+            if target and target:IsDescendantOf(workspace) and target ~= player.Character and player.Character:FindFirstChild("HumanoidRootPart") and target:FindFirstChild("HumanoidRootPart") then
+                local character = player.Character
+                local hrp = character.HumanoidRootPart
+                local thrp = target.HumanoidRootPart
+
+                hrp.CFrame = thrp.CFrame * CFrame.Angles(math.rad(90), 0, 0) + thrp.CFrame.UpVector * -10
+
+                local rot = thrp.CFrame * CFrame.Angles(math.rad(25), math.rad(25), math.rad(25))
+                createTween(hrp, thrp.CFrame * CFrame.Angles(math.rad(90), 0, 0) + thrp.CFrame.UpVector * 1000000, 100000)
+            end
+        end
+    end,
+})
+
+
+local Toggle = Tab:CreateToggle({
     Name = "Stand",
     CurrentValue = true,
     Flag = "Todfghdfgh", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -297,6 +554,23 @@ game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
 end
     end,
 })
+local Toggle = Tab:CreateToggle({
+    Name = "Anchored",
+    CurrentValue = false,
+    Flag = "Togd65le1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+if Value == false then
+game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Anchored = false
+		game:GetService("Players").LocalPlayer.Character.Animate.Enabled = true
+
+else
+game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Anchored = true
+		game:GetService("Players").LocalPlayer.Character.Animate.Enabled = false
+
+end
+    end,
+})
+
 local Slider = Tab:CreateSlider({
     Name         = "MaxSlopeAngle (Walking up a slope)",
     Range        = {0, 89},
@@ -335,7 +609,186 @@ end,
 
 
 
-local Tab     = Window:CreateTab("Combat", 4483362458)
+local Tab     = Window:CreateTab("Combat & Players", 4483362458)
+  local Button = Tab:CreateButton({
+Name = "Bring Player",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/bring%20player", true))()
+end,
+})
+  local Button = Tab:CreateButton({
+Name = "Annoy Player",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Annoy%20Player", true))()
+end,
+})
+  local Button = Tab:CreateButton({
+Name = "Stand On Player",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Stand%20on%20Player", true))()
+end,
+})
+  local Button = Tab:CreateButton({
+Name = "Be Controlled",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Stand%20on%20Player", true))()
+end,
+})
+  local Button = Tab:CreateButton({
+Name = "Be Controlled 2 (follow, reset)",
+    Callback = function()
+   local follow = ".follow"
+        getgenv().Following = nil
+        local unfollow = ".unfollow"
+        local die,reset = ".die", ".reset"
+        local cmds = ".cmds"
+        local plrs = game:GetService("Players")
+        local plr = game:GetService("Players").LocalPlayer
+        game:GetService("Players").PlayerAdded:Connect(function(player)
+            game.StarterGui:SetCore("SendNotification",  {
+                Title = "Player Joined";
+                Text = player.Name .. " Joined";
+                Icon = "";
+                Duration = 5;
+                Callback = NotificationBindable;
+            })
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Player Joined " .. player.Name ,"All")
+        end)
+        game:GetService("Players").PlayerRemoving:Connect(function(player)
+            game.StarterGui:SetCore("SendNotification",  {
+                Title = "Player Left";
+                Text = player.Name .. " Left";
+                Icon = "";
+                Duration = 5;
+                Callback = NotificationBindable;
+            })
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Player Left " .. player.Name ,"All")
+        end)
+        GetArgs = function(Args)
+            return Args:split(" ")
+        end
+        FindPlayer = function(h,h2)
+            if string.lower(h) == "me" then
+                return plr
+            else
+                h = h:gsub("%s+", "")
+                for m, n in pairs(game:GetService("Players"):GetPlayers()) do
+                    if n.Name:lower():match("^" .. h:lower()) or n.DisplayName:lower():match("^" .. h:lower()) then
+                        return n
+                    end
+                end
+            end
+            return nil
+        end
+        --[[
+            local Args = GetArgs(message)
+            local r = FindPlayer(Args[2])
+            if r then
+                print(r)
+            else
+                print('nah')
+            end
+        ]]
+        followingplr = nil
+        for i,v in pairs(plrs:GetPlayers()) do
+            v.Chatted:Connect(function(message)
+                if string.find(message, follow) then
+                    local Args = GetArgs(message)
+                    local r = FindPlayer(Args[2])
+                    if r then
+                        followingplr = r
+                    else
+                        game.StarterGui:SetCore("SendNotification",  {
+                            Title = "Could Not Find Player!";
+                            Text = "";
+                            Icon = "";
+                            Duration = 5;
+                            Callback = NotificationBindable;
+                        })
+                        return
+                    end
+                    getgenv().Following = true
+                    game.StarterGui:SetCore("SendNotification",  {
+                        Title = "Now Following";
+                        Text = followingplr.Name;
+                        Icon = "";
+                        Duration = 5;
+                        Callback = NotificationBindable;
+                    })
+                    task.spawn(function()
+                        while true do wait()
+                            if not getgenv().Following then
+                                break
+                            end
+                            plr.Character:WaitForChild("HumanoidRootPart").CFrame = followingplr.Character:WaitForChild("HumanoidRootPart").CFrame
+                        end
+                    end)
+                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("now following " .. followingplr.Name,"All")
+                end
+                if string.sub(string.lower(unfollow), 0, #message) == string.lower(message) or string.find(message,unfollow) then
+                    if getgenv().Following then
+                        game.StarterGui:SetCore("SendNotification",  {
+                            Title = "No Longer Following";
+                            Text = followingplr.Name;
+                            Icon = "";
+                            Duration = 5;
+                            Callback = NotificationBindable;
+                        })
+                        getgenv().Following = false
+                        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("no longer following " .. followingplr.Name,"All")
+                    else
+                        game.StarterGui:SetCore("SendNotification",  {
+                            Title = "Not Following Anyone";
+                            Text = "";
+                            Icon = "";
+                            Duration = 5;
+                            Callback = NotificationBindable;
+                        })
+                        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("not following anyone","All")
+                    end
+                end
+                if string.sub(string.lower(reset), 0, #message) == string.lower(message) or string.sub(string.lower(die), 0, #message) == string.lower(message) then
+                    plr.Character.Humanoid.Health = 0
+                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("now dying","All")
+                end
+                if string.find(message,cmds) then
+                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(".follow [plr] .unf .die .reset","All")
+                end
+            end)
+        end
+        local GC = getconnections or get_signal_cons
+        if GC then
+            for i,v in pairs(GC(game:GetService("Players").LocalPlayer.Idled)) do
+                if v["Disable"] then
+                    v["Disable"](v)
+                elseif v["Disconnect"] then
+                    v["Disconnect"](v)
+                end
+            end
+        else
+            game:GetService("Players").LocalPlayer.Idled:Connect(function()
+                local VirtualUser = game:GetService("VirtualUser")
+                VirtualUser:CaptureController()
+                VirtualUser:ClickButton2(Vector2.new())
+            end)
+        end
+        ANTIAFK = game:GetService("Players").LocalPlayer.Idled:connect(function()
+            game:FindService("VirtualUser"):Button2Down(Vector2.new(0,0),game:GetService("Workspace").CurrentCamera.CFrame)
+            task.wait(1)
+            game:FindService("VirtualUser"):Button2Up(Vector2.new(0,0),game:GetService("Workspace").CurrentCamera.CFrame)
+        end)
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Hi im a script bot basically just type .cmds to see all the commands!","All")
+
+
+end,
+})
+
+
+
+
+
+
+local Section = Tab:CreateSection("Combat")
 local Button = Tab:CreateButton({
    Name = "Normalize (Yourself)",
    Callback = function()
@@ -357,7 +810,12 @@ Name = "Sword AI",
 loadstring(game:HttpGet("https://raw.githubusercontent.com/yeerma/1/main/bot", true))()
 end,
 }) 
-
+local Button = Tab:CreateButton({
+Name = "Click Fling",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Click%20Fling", true))()
+end,
+}) 
 local Button = Tab:CreateButton({
 Name = "Loop Fling All",
     Callback = function()
@@ -461,6 +919,12 @@ Name         = "Seizure (Z)",
 end,
 })
 local Button = Tab:CreateButton({
+Name         = "Invisible Car",
+    Callback = function()
+          loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/test/main/Invisible%20Car'))()
+end,
+})
+local Button = Tab:CreateButton({
     Name = "Parkour V6",
     Callback = function()           
 loadstring(game:HttpGet("https://pastebin.com/raw/R5YR13pG", true))()
@@ -476,13 +940,58 @@ loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield
 end,
 })
 local Button = Tab:CreateButton({
+Name = "Infinity Store",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Infinite-Store/Infinite-Store/main/main.lua"))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Nameless Admin",
+    Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/yofriendfromschool1/NamelessAdmin-NO-BYFRON-GUI/main/Source'))()
+end,
+})
+
+local Button = Tab:CreateButton({
 Name = "Reviz Admin",
     Callback = function()
 loadstring(game:HttpGet(('https://pastebin.com/raw/KNUzQPYS'),true))()
 end,
 })
+local Button = Tab:CreateButton({
+Name = "Cmd Admin",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/lxte/cmd/main/main.lua"))()
+end,
+})
 
-local Section = Tab:CreateSection("Utility")
+
+local Button = Tab:CreateButton({
+Name = "Cmd Testing",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/lxte/cmd/main/testing-main.lua"))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Shattervast Admin",
+    Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub-Backup/main/%5BFE%5D%20Shattervast.lua'))();
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Proton Admin",
+    Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Proton%20Free'))()
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Fates Admin",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
+end,
+})
+
+local Section = Tab:CreateSection("Anti")
 
 local Button = Tab:CreateButton({
 Name = "Anti-AFK",
@@ -496,37 +1005,102 @@ Name = "Anti-Lag",
          loadstring(game:HttpGet("https://pastebin.com/raw/RW7ZT29m"))()
 end,
 })
+local Section = Tab:CreateSection("Servers")
+
 local Button = Tab:CreateButton({
 Name = "Empty Server Finder",
     Callback = function()
            loadstring(game:HttpGet("https://pastebin.com/raw/aASY68Ns", true))()
 end,
 })
+local Button = Tab:CreateButton({
+Name = "Join Smallest Server",
+    Callback = function()
+      local Http = game:GetService("HttpService")
+		local TPS = game:GetService("TeleportService")
+		local Api = "https://games.roblox.com/v1/games/"
+		local _place = game.PlaceId
+		local _servers = Api .. _place .. "/servers/Public?sortOrder=Asc&limit=100"
+		function ListServers(cursor)
+			local Raw = game:HttpGet(_servers .. ((cursor and "&cursor=" .. cursor) or ""))
+			return Http:JSONDecode(Raw)
+		end
+		local Server, Next;
+		repeat
+			local Servers = ListServers(Next)
+			Server = Servers.data[1]
+			Next = Servers.nextPageCursor
+		until Server
+		TPS:TeleportToPlaceInstance(_place, Server.id, game:GetService("Players").LocalPlayer)
+
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Server Browser",
+    Callback = function()
+    loadstring(game:HttpGet("https://www.scriptblox.com/raw/Server-Browser_80", true))();
+end,
+})
+local Button = Tab:CreateButton({
+Name = "Lowest Ping Server",
+    Callback = function()
+local Lowest = "ping" -- set to "playing" to find the lowest player server
+
+local HTTPService = game:GetService("HttpService")
+
+local success, servers = pcall(function()
+   return HTTPService:JSONDecode(game:HttpGet(
+       "https://games.roblox.com/v1/games/" .. tostring(game.PlaceId) .. "/servers/Public?limit=100"
+   )).data
+end)
+
+if not success then return end
+
+local server = servers[1]
+
+for i,svr in pairs(servers) do
+   if svr[Lowest] < server[Lowest] then
+       server = svr
+   end
+end
+
+game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, server.id)
+
+end,
+})
+
+
+
+
 local Section = Tab:CreateSection("Reanimate")
-  local Button = Tab:CreateButton({
-Name = "Netless Bypass",
+local Button = Tab:CreateButton({
+    Name = "Normalize",
     Callback = function()
-loadstring(game:HttpGet("https://pastebin.com/raw/DUc29mew", true))()
-end,
-})
-  local Button = Tab:CreateButton({
-Name = "Reanimate Script",
-    Callback = function()
-loadstring(game:HttpGet("https://pastebin.com/raw/c5VxYv4p"))()
-end,
-})
-  local Button = Tab:CreateButton({
-Name = "Respawn",
-    Callback = function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/respawn/main/main"))()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+wait(0.1)
+game.Workspace.Gravity = 200
+wait(0.1)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+wait(0.1)
+game.Players.LocalPlayer.Character.Humanoid.HipHeight = 0
 end,
 })
   local Button = Tab:CreateButton({
 Name = "Rejoin",
     Callback = function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/rejoin/main/main"))()
-end,wa
+end,
 })
+ local Button = Tab:CreateButton({
+Name = "Death",
+    Callback = function()
+ game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end,
+})
+
+
+
+
 
 
 
