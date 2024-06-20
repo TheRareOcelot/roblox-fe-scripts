@@ -436,16 +436,28 @@ Name = "Upside Down",
              loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Upside%20Down", true))()
 end,
 })
-local Section = Tab:CreateSection("Basic")
-
 local Button = Tab:CreateButton({
-Name = "Rotate Character",
+Name = "Space Walk",
     Callback = function()
-             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Character%20Rotator", true))()
+ game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 8
+wait(0.1)
+game.Workspace.Gravity = 20
+wait(0.1)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 15
 end,
 })
-
-
+local Toggle = Tab:CreateToggle({
+    Name = "Clip Into Ground",
+    CurrentValue = true,
+    Flag = "To4fgh", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+if Value == true then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z) - Vector3.new(0,4,0)
+else
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z) + Vector3.new(0,4,0)
+end
+    end,
+})
 
 local Toggle = Tab:CreateToggle({
     Name = "Sit",
@@ -455,90 +467,15 @@ local Toggle = Tab:CreateToggle({
         game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = Value
     end,
 })
-local Toggle = Tab:CreateToggle({
-    Name = "Rotate",
-    CurrentValue = true,
-    Flag = "Todfghggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(Value)
-        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = Value
-    end,
-})
-local Toggle = Tab:CreateToggle({
-    Name = "Click to Lift",
-    CurrentValue = true,
-    Flag = "Todf22fle1",
-    Callback = function(Value)
-        -- Services
-        local player = game:GetService("Players").LocalPlayer
-        local mouse = player:GetMouse()
-        local camera = game:GetService("Workspace").CurrentCamera
-        local ts = game:GetService("TweenService")
-        local runService = game:GetService("RunService")
 
-        -- Functions
-        local function createTween(part, cframe, ttime)
-            local tweenInfo = TweenInfo.new(ttime)
-            local tween = ts:Create(part, tweenInfo, {CFrame = cframe})
-            tween:Play()
-            tween.Completed:Wait()
-        end
 
-        -- Instances
-        local outline = Instance.new("Highlight")
+local Section = Tab:CreateSection("Basic")
 
-        -- Variables
-        local target = nil
-
-        -- Mouse Events
-        mouse.Button1Up:Connect(function()
-            if mouse.Target then
-                local model = mouse.Target:FindFirstAncestorOfClass("Model")
-                if model and model:FindFirstChild("Humanoid") then
-                    camera.CameraSubject = model.Humanoid
-                    target = model
-                else
-                    outline.Parent = nil
-                end
-            end
-        end)
-
-        -- RunService Events
-        runService.RenderStepped:Connect(function()
-            if player.Character:FindFirstChild("HumanoidRootPart") then
-                player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-                if target and target:FindFirstChild("HumanoidRootPart") then
-                    if target.HumanoidRootPart.Position.Y + 20 < player.Character.HumanoidRootPart.Position.Y then
-                        if tween then
-                            tween:Cancel()
-                        end
-                    end
-                end
-            end
-
-            if mouse.Target then
-                local model = mouse.Target:FindFirstAncestorOfClass("Model")
-                if model and model:FindFirstChild("Humanoid") then
-                    outline.Parent = model
-                else
-                    outline.Parent = nil
-                end
-            end
-        end)
-
-        -- Main Loop
-        while Value and task.wait() do
-            if target and target:IsDescendantOf(workspace) and target ~= player.Character and player.Character:FindFirstChild("HumanoidRootPart") and target:FindFirstChild("HumanoidRootPart") then
-                local character = player.Character
-                local hrp = character.HumanoidRootPart
-                local thrp = target.HumanoidRootPart
-
-                hrp.CFrame = thrp.CFrame * CFrame.Angles(math.rad(90), 0, 0) + thrp.CFrame.UpVector * -10
-
-                local rot = thrp.CFrame * CFrame.Angles(math.rad(25), math.rad(25), math.rad(25))
-                createTween(hrp, thrp.CFrame * CFrame.Angles(math.rad(90), 0, 0) + thrp.CFrame.UpVector * 1000000, 100000)
-            end
-        end
-    end,
+local Button = Tab:CreateButton({
+Name = "Rotate Character",
+    Callback = function()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Character%20Rotator", true))()
+end,
 })
 
 
@@ -595,17 +532,15 @@ game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
 end
     end,
 })
-
-local Button = Tab:CreateButton({
-Name = "Space Walk",
-    Callback = function()
- game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 8
-wait(0.1)
-game.Workspace.Gravity = 20
-wait(0.1)
-game.Players.LocalPlayer.Character.Humanoid.JumpPower = 15
-end,
+local Toggle = Tab:CreateToggle({
+    Name = "Rotate",
+    CurrentValue = true,
+    Flag = "Todfghggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = Value
+    end,
 })
+
 
 
 
@@ -930,6 +865,44 @@ local Button = Tab:CreateButton({
 loadstring(game:HttpGet("https://pastebin.com/raw/R5YR13pG", true))()
    end   
 })
+local Section = Tab:CreateSection("Basic")
+local Button = Tab:CreateButton({
+    Name = "Jump",
+    Callback = function()           
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+   end   
+})
+local Toggle = Tab:CreateToggle({
+    Name = "Freefalling",
+    CurrentValue = true,
+    Flag = "Tofurye1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+      game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+       
+        
+        if  game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
+            if Value then
+                game.Players.LocalPlayer:SetAttribute("Freefalling", true)
+                spawn(function()
+                    while game.Players.LocalPlayer:GetAttribute("Freefalling") and game:GetService("RunService").Stepped:Wait() do
+                        game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Freefall)
+                    end
+                end)
+            else
+               
+                game.Players.LocalPlayer:SetAttribute("Freefalling", false)
+                game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.GettingUp)
+                 game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Running)
+            end
+        end
+    end,
+})
+local Button = Tab:CreateButton({
+    Name = "Trip",
+    Callback = function()           
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Ragdoll)
+   end   
+})
 
 local Tab = Window:CreateTab("Admin/Utility", 4483362458)
 local Section = Tab:CreateSection("Admins")
@@ -1097,4 +1070,5 @@ Name = "Death",
  game.Players.LocalPlayer.Character.Humanoid.Health = 0
 end,
 })
+
 
