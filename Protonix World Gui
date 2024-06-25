@@ -432,13 +432,13 @@ Tab:AddButton({
 Tab:AddButton({
     Name     = "Attach Player To Part (Left Shift - E)",
     Callback = function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Attach%20To%20Part", true))()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/roblox-fe-scripts/main/Attach%20To%20Part", true))()
     end    
 })
 Tab:AddButton({
     Name     = "Npc Controller (Left Shift)",
     Callback = function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/NPC%20Controller"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/roblox-fe-scripts/main/NPC%20Controller"))()
     end    
 })
 local Tab = Window:MakeTab({
@@ -456,7 +456,7 @@ Tab:AddButton({
 Tab:AddButton({
     Name     = "Tool Rotator (Re-equip to use)",
     Callback = function()
-              loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/test/main/Tool%20Rotator'))()
+              loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/roblox-fe-scripts/main/Tool%20Rotator'))()
     end    
 })  
 Tab:AddButton({
@@ -529,7 +529,7 @@ Tab:AddButton({
   Tab:AddButton({
     Name     = "Grab Tools",
     Callback = function()
-                loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/test/main/Grab%20Tools', true))()
+                loadstring(game:HttpGet('https://raw.githubusercontent.com/TheRareOcelot/roblox-fe-scripts/main/Grab%20Tools', true))()
     end    
 })
   Tab:AddButton({
@@ -563,13 +563,13 @@ Tab:AddButton({
 Tab:AddButton({
     Name     = "Invisible Tool",
     Callback = function()
-                   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Invisible%20Tool"))()
+                   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/roblox-fe-scripts/main/Invisible%20Tool"))()
     end    
 })
 Tab:AddButton({
     Name     = "Tools On A Leash",
     Callback = function()
-                  loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Tools%20On%20a%20Leash"))()
+                  loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/roblox-fe-scripts/main/Tools%20On%20a%20Leash"))()
     end    
 })
 
@@ -646,7 +646,7 @@ Tab:AddTextbox({
 Tab:AddButton({
     Name     = "Fake Chatter",
     Callback = function()
-                   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/fake%20chatter"))()
+                   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/roblox-fe-scripts/main/fake%20chatter"))()
     end    
 })
 Tab:AddButton({
@@ -842,7 +842,7 @@ local Tab = Window:MakeTab({
 Tab:AddButton({
     Name     = "Sound Gui",
     Callback = function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Sound%20GUI", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/roblox-fe-scripts/main/Sound%20GUI", true))()
  
     end    
 })
@@ -852,14 +852,14 @@ local Section = Tab:AddSection({
 Tab:AddButton({
     Name     = "Car Tornado",
     Callback = function()
-                   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Car%20Tornado", true))()
+                   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/roblox-fe-scripts/main/Car%20Tornado", true))()
 
     end    
 })
 Tab:AddButton({
     Name     = "Car Grabber",
     Callback = function()
-                   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/test/main/Car%20Grabber", true))()
+                   loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRareOcelot/roblox-fe-scripts/main/Car%20Grabber", true))()
 
     end    
 })
@@ -871,3 +871,4 @@ Tab:AddButton({
 
     end    
 })
+
